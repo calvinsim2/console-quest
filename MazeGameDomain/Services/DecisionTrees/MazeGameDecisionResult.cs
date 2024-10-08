@@ -5,9 +5,9 @@ namespace MazeGameDomain.Services.DecisionTrees
     public class MazeGameDecisionResult : MazeGameDecision
     {
         public MazeGameFlow Result {  get; set; }
-        public override async Task<MazeGameFlow> EvaluateAsync(string input)
+        public override MazeGameFlow EvaluateAsync()
         {
-            return await Task.FromResult(Result);
+            return Result;
         }
 
     }

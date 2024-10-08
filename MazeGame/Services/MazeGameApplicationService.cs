@@ -18,6 +18,7 @@ namespace MazeGameApplication.Services
         public async Task InvokeGame()
         {
             MazeGameDataModel mazeGameDataModel = GetGameRequiredDetails();
+            await _mazeGameService.StartGame(mazeGameDataModel);
         } 
 
         private MazeGameDataModel GetGameRequiredDetails()
@@ -34,6 +35,7 @@ namespace MazeGameApplication.Services
 
             adventurer.Name = GetName();
             adventurer.Class = GetClass();
+            adventurer.Health = DetermineHealth(adventurer.Class);
 
             return adventurer;
 
@@ -88,6 +90,27 @@ namespace MazeGameApplication.Services
 
             return classSelection;
 
+        }
+
+        private decimal DetermineHealth(int adventurerClass)
+        {
+            decimal baseHealth = 100m;
+            Class adventurerClassEnum = (Class)adventurerClass;
+
+            switch (adventurerClassEnum)
+            {
+                case Class.Warrior:
+                    baseHealth *= 1.5m;
+                    break;
+
+                case Class.Magician:
+                    baseHealth *= 0.75m;
+                    break;
+
+                default: break;
+            }
+
+            return baseHealth;
         }
     }
 }

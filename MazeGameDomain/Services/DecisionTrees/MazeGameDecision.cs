@@ -6,6 +6,6 @@ namespace MazeGameDomain.Services.DecisionTrees
     {
         public string? Title { get; set; }
 
-        public abstract Task<MazeGameFlow> EvaluateAsync(string input);
+        public abstract MazeGameFlow EvaluateAsync();
     }
 }

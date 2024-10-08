@@ -16,7 +16,7 @@ namespace MazeGameDomain.Services
 
         public async Task StartGame(MazeGameDataModel mazeGameDataModel)
         {
-
+            MazeGameAsync(mazeGameDataModel);
         }
         public async Task<MazeGameFlow> MazeGameAsync(MazeGameDataModel mazeGameDataModel, 
                                                       MazeGameFlow startingStep = MazeGameFlow.Town)
@@ -34,7 +34,7 @@ namespace MazeGameDomain.Services
 
                     case MazeGameFlow.IceCavern:
                         MazeGameDecisionQuery iceCavernCreate = await _iceCavern.TransverseIceCavernAsync(mazeGameDataModel);
-                        currentStep = await iceCavernCreate.EvaluateAsync(string.Empty);
+                        currentStep = iceCavernCreate.EvaluateAsync();
                         break;
 
                     case MazeGameFlow.FireCavern:
