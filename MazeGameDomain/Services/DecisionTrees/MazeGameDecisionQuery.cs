@@ -8,19 +8,19 @@ namespace MazeGameDomain.Services.DecisionTrees
 
         public MazeGameDecision? Positive { get; set; }
         public MazeGameDecision? Negative { get; set; }
-        public Func<string, Task<bool>> ProcessPhase { get; set; }
+        public Func<bool> ProcessPhase { get; set; }
 
-        public override async Task<MazeGameFlow> EvaluateAsync(string input) 
+        public override MazeGameFlow EvaluateAsync() 
         {
-            bool result = await ProcessPhase(input);
+            bool result = ProcessPhase();
 
             if (result)
             {
-                return await Positive!.EvaluateAsync(input);
+                return Positive!.EvaluateAsync();
             }
             else
             {
-                return await Negative!.EvaluateAsync(input);
+                return Negative!.EvaluateAsync();
             }
         }
     }

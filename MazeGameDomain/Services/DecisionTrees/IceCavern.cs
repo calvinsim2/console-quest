@@ -20,7 +20,7 @@ namespace MazeGameDomain.Services.DecisionTrees
             {
                 Title = "Ice Slime appeared, prepare for battle... ",
 
-                ProcessPhase = async _ =>
+                ProcessPhase = () =>
                 {
                     if (adventurerDetail.Class == (int)Class.Magician &&
                         adventurerDetail.Specialisation == Specialisation.IceMage)
@@ -39,7 +39,7 @@ namespace MazeGameDomain.Services.DecisionTrees
             {
                 Title = "Is Adventurer resistant to ice? ",
 
-                ProcessPhase = async _ =>
+                ProcessPhase = () =>
                 {
                     if (adventurerDetail.Class == (int)Class.Magician &&
                         adventurerDetail.Specialisation == Specialisation.IceMage)

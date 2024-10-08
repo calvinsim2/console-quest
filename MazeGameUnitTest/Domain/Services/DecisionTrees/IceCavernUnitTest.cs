@@ -27,7 +27,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         };
 
         [Fact]
-        public async Task CallTransverseIceCavernAsync_Positive_AdventurerIsResistantToIce_ReturnTrue()
+        public void CallTransverseIceCavernAsync_Positive_AdventurerIsResistantToIce_ReturnTrue()
         {
             // Arrange
             AdventurerMock.Class = (int)Class.Magician;
@@ -38,9 +38,9 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
                 // Act
                 CallTransverseIceCavernAsync();
 
-                Func<string, Task<bool>> isAdventurerIceResistantQuery = IceCavernMock.IsAdventurerIceResistant.ProcessPhase;
+                Func<bool> isAdventurerIceResistantQuery = IceCavernMock.IsAdventurerIceResistant.ProcessPhase;
 
-                bool results = await isAdventurerIceResistantQuery.Invoke(string.Empty);
+                bool results = isAdventurerIceResistantQuery.Invoke();
 
                 // Assert
                 Assert.True(results);
@@ -53,7 +53,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         }
 
         [Fact]
-        public async Task CallTransverseIceCavernAsync_Negative_AdventurerIsNotResistantToIce_ReturnFalse()
+        public void CallTransverseIceCavernAsync_Negative_AdventurerIsNotResistantToIce_ReturnFalse()
         {
             // Arrange
             AdventurerMock.Class = (int)Class.Magician;
@@ -64,9 +64,9 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
                 // Act
                 CallTransverseIceCavernAsync();
 
-                Func<string, Task<bool>> isAdventurerIceResistantQuery = IceCavernMock.IsAdventurerIceResistant.ProcessPhase;
+                Func<bool> isAdventurerIceResistantQuery = IceCavernMock.IsAdventurerIceResistant.ProcessPhase;
 
-                bool results = await isAdventurerIceResistantQuery.Invoke(string.Empty);
+                bool results = isAdventurerIceResistantQuery.Invoke();
 
                 // Assert
                 Assert.False(results);
