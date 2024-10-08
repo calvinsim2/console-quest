@@ -2,7 +2,7 @@
 {
     public class MazeGameDataModel
     {
-        public Adventurer Adventurer { get; set; }
+        public Adventurer Adventurer { get; set; } = new Adventurer();
         public MazeGameDataModel() { }
     }
 }

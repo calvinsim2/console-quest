@@ -15,8 +15,8 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
 
         private static readonly Adventurer AdventurerMock = new Adventurer
         {
-            Name = "Angella Sim",
-            Class = Class.Magician,
+            Name = "Annoying NBAK",
+            Class = (int)Class.Magician,
             Specialisation = Specialisation.IceMage,
             Inventory = new List<string>()
         };
@@ -30,7 +30,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         public async Task CallTransverseIceCavernAsync_Positive_AdventurerIsResistantToIce_ReturnTrue()
         {
             // Arrange
-            AdventurerMock.Class = Class.Magician;
+            AdventurerMock.Class = (int)Class.Magician;
             AdventurerMock.Specialisation = Specialisation.IceMage;
 
             try
@@ -56,7 +56,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         public async Task CallTransverseIceCavernAsync_Negative_AdventurerIsNotResistantToIce_ReturnFalse()
         {
             // Arrange
-            AdventurerMock.Class = Class.Magician;
+            AdventurerMock.Class = (int)Class.Magician;
             AdventurerMock.Specialisation = Specialisation.FireMage;
 
             try

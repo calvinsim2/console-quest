@@ -22,7 +22,7 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 ProcessPhase = async _ =>
                 {
-                    if (adventurerDetail.Class == Class.Magician &&
+                    if (adventurerDetail.Class == (int)Class.Magician &&
                         adventurerDetail.Specialisation == Specialisation.IceMage)
                     {
                         return true;
@@ -41,7 +41,7 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 ProcessPhase = async _ =>
                 {
-                    if (adventurerDetail.Class == Class.Magician &&
+                    if (adventurerDetail.Class == (int)Class.Magician &&
                         adventurerDetail.Specialisation == Specialisation.IceMage)
                     {
                         return true;

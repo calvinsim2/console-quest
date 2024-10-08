@@ -2,6 +2,7 @@
 {
     public enum Class
     {
+        None,
         Warrior,
         Magician,
         Bowman

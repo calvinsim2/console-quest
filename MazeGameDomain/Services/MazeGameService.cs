@@ -1,11 +1,12 @@
 ﻿using MazeGameDomain.Enums;
+using MazeGameDomain.Interfaces;
 using MazeGameDomain.Interfaces.DecisionTrees;
 using MazeGameDomain.Models;
 using MazeGameDomain.Services.DecisionTrees;
 
 namespace MazeGameDomain.Services
 {
-    public class MazeGameService
+    public class MazeGameService : IMazeGameService
     {
         private readonly IIceCavern _iceCavern;
         public MazeGameService(IIceCavern iceCavern) 
@@ -13,6 +14,10 @@ namespace MazeGameDomain.Services
             _iceCavern = iceCavern;
         }
 
+        public async Task StartGame(MazeGameDataModel mazeGameDataModel)
+        {
+
+        }
         public async Task<MazeGameFlow> MazeGameAsync(MazeGameDataModel mazeGameDataModel, 
                                                       MazeGameFlow startingStep = MazeGameFlow.Town)
         {
