@@ -1,6 +1,9 @@
-﻿using MazeGameDomain.Enums;
+﻿using MazeGameDomain.Commons.GenerateMonsters;
+using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces.DecisionTrees;
+using MazeGameDomain.ModelCreators;
 using MazeGameDomain.Models;
+using MazeGameDomain.Models.Monsters;
 
 namespace MazeGameDomain.Services.DecisionTrees
 {
@@ -15,6 +18,7 @@ namespace MazeGameDomain.Services.DecisionTrees
         public async Task<MazeGameDecisionQuery> TransverseIceCavernAsync(MazeGameDataModel mazeGameDataModel)
         {
             Adventurer adventurerDetail = mazeGameDataModel.Adventurer;
+            IceCavernMonsterCreator iceCavernMonsterCreator = new IceCavernMonsterCreator();
 
             IceSlimeEncounter = new MazeGameDecisionQuery()
             {
@@ -22,11 +26,7 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 ProcessPhase = () =>
                 {
-                    if (adventurerDetail.Class == (int)Class.Magician &&
-                        adventurerDetail.Specialisation == Specialisation.IceMage)
-                    {
-                        return true;
-                    }
+                    IceCavernMonster iceSlime = iceCavernMonsterCreator.CreateMonster(IceCavernMonsters.GenerateIceSlime());
 
                     return false;
                 },

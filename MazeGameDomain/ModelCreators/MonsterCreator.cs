@@ -4,61 +4,40 @@ using MazeGameDomain.Models.Monsters;
 
 namespace MazeGameDomain.ModelCreators
 {
-    public abstract class MonsterCreator
-    {
-        public abstract IMonster CreateMonster(object parameters);
 
+    public abstract class MonsterCreator<TParameter, TMonster> where TParameter : MonsterParameter where TMonster : IMonster
+    {
+        public abstract TMonster CreateMonster(TParameter parameter);
     }
 
-    public class IceCavernMonsterCreator : MonsterCreator
+    public class IceCavernMonsterCreator : MonsterCreator<IceCavernMonsterParameter, IceCavernMonster>
     {
-        public override IMonster CreateMonster(object parameters)
+        public override IceCavernMonster CreateMonster(IceCavernMonsterParameter parameter)
         {
-            IceCavernMonsterParameter iceCavernMonsterParameter = parameters as IceCavernMonsterParameter ?? throw new ArgumentException();
-
-            IceCavernMonster iceCavernMonster = new IceCavernMonster(iceCavernMonsterParameter.Name, iceCavernMonsterParameter.Health,
-                            iceCavernMonsterParameter.MP, iceCavernMonsterParameter.Type, iceCavernMonsterParameter.MonsterSkills);
-
-            return iceCavernMonster;
+            return new IceCavernMonster(parameter.Name, parameter.Health, parameter.MP, parameter.Type, parameter.MonsterSkills);
         }
     }
 
-    public class FireCavernMonsterCreator : MonsterCreator
+    public class FireCavernMonsterCreator : MonsterCreator<FireCavernMonsterParameter, FireCavernMonster>
     {
-        public override IMonster CreateMonster(object parameters)
+        public override FireCavernMonster CreateMonster(FireCavernMonsterParameter parameter)
         {
-            FireCavernMonsterParameter fireCavernMonsterParameter = parameters as FireCavernMonsterParameter ?? throw new ArgumentException();
-
-            FireCavernMonster fireCavernMonster = new FireCavernMonster(fireCavernMonsterParameter.Name, fireCavernMonsterParameter.Health,
-                            fireCavernMonsterParameter.MP, fireCavernMonsterParameter.Type, fireCavernMonsterParameter.MonsterSkills);
-
-            return fireCavernMonster;
+            return new FireCavernMonster(parameter.Name, parameter.Health, parameter.MP, parameter.Type, parameter.MonsterSkills);
         }
     }
 
-    public class ThickForestMonsterCreator : MonsterCreator
+    public class ThickForestMonsterCreator : MonsterCreator<ThickForestMonsterParameter, ThickForestMonster>
     {
-        public override IMonster CreateMonster(object parameters)
+        public override ThickForestMonster CreateMonster(ThickForestMonsterParameter parameter)
         {
-            ThickForestMonsterParameter thickForestMonsterParameter = parameters as ThickForestMonsterParameter ?? throw new ArgumentException();
-
-            ThickForestMonster thickForestMonster = new ThickForestMonster(thickForestMonsterParameter.Name, thickForestMonsterParameter.Health,
-                            thickForestMonsterParameter.MP, thickForestMonsterParameter.Type, thickForestMonsterParameter.MonsterSkills);
-
-            return thickForestMonster;
+            return new ThickForestMonster(parameter.Name, parameter.Health, parameter.MP, parameter.Type, parameter.MonsterSkills);
         }
     }
-
-    public class SkyCastleMonsterCreator : MonsterCreator
+    public class SkyCastleMonsterCreator : MonsterCreator<SkyCastleMonsterParameter, SkyCastleMonster>
     {
-        public override IMonster CreateMonster(object parameters)
+        public override SkyCastleMonster CreateMonster(SkyCastleMonsterParameter parameter)
         {
-            SkyCastleMonsterParameter skyCastleMonsterParameter = parameters as SkyCastleMonsterParameter ?? throw new ArgumentException();
-
-            SkyCastleMonster skyCastleMonster = new SkyCastleMonster(skyCastleMonsterParameter.Name, skyCastleMonsterParameter.Health,
-                            skyCastleMonsterParameter.MP, skyCastleMonsterParameter.Type, skyCastleMonsterParameter.MonsterSkills);
-
-            return skyCastleMonster;
+            return new SkyCastleMonster(parameter.Name, parameter.Health, parameter.MP, parameter.Type, parameter.MonsterSkills);
         }
     }
 }
