@@ -1,4 +1,5 @@
 ﻿using MazeGameDomain.Enums;
+using MazeGameDomain.Models;
 using MazeGameDomain.Models.Monsters;
 
 namespace MazeGameDomain.ModelParameters
