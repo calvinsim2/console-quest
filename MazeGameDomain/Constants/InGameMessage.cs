@@ -26,5 +26,22 @@
             "\n 1 - Warrior" +
             "\n 2 - Magician" +
             "\n 3 - Archer";
+
+        public static readonly string PromptCombatDecision = "Choose an action:" + "\n1 - Combat" + "\n2 - Items";
+        public static readonly string InvalidCombatDecisionSelection = "Invalid decision selected, please input the correct decision.";
+
+        public static readonly string PromptSkill = "Select a skill:";
+
+        public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
+        {
+            return $"{index} - {skillName}, MP: {mpCost}, Damage: {damage}";
+        }
+        public static string AdventurerInsufficientMPSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
+        {
+            return $"{index} - {skillName}, MP: {mpCost} (Not Enough Mana), Damage: {damage}";
+        }
+
+        public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
+        public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
     }
 }

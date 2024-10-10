@@ -17,7 +17,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         {
             Name = "Annoying NBAK",
             Class = (int)Class.Magician,
-            Specialisation = Specialisation.IceMage,
+            Specialisation = (int)Specialisation.IceMage,
             Inventory = new List<string>()
         };
 
@@ -31,7 +31,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         {
             // Arrange
             AdventurerMock.Class = (int)Class.Magician;
-            AdventurerMock.Specialisation = Specialisation.IceMage;
+            AdventurerMock.Specialisation = (int)Specialisation.IceMage;
 
             try
             {
@@ -57,7 +57,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         {
             // Arrange
             AdventurerMock.Class = (int)Class.Magician;
-            AdventurerMock.Specialisation = Specialisation.FireMage;
+            AdventurerMock.Specialisation = (int)Specialisation.FireMage;
 
             try
             {

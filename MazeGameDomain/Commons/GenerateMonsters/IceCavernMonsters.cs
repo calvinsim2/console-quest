@@ -1,4 +1,5 @@
 ﻿using MazeGameDomain.ModelParameters;
+using MazeGameDomain.Models;
 using MazeGameDomain.Models.Monsters;
 
 namespace MazeGameDomain.Commons.GenerateMonsters

@@ -1,4 +1,5 @@
-﻿using MazeGameDomain.Commons.GenerateMonsters;
+﻿using MazeGameDomain.Commons.Combat;
+using MazeGameDomain.Commons.GenerateMonsters;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces.DecisionTrees;
 using MazeGameDomain.ModelCreators;
@@ -27,8 +28,10 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     IceCavernMonster iceSlime = iceCavernMonsterCreator.CreateMonster(IceCavernMonsters.GenerateIceSlime());
-
+                    
+                    //return Combat.CommenceCombat(adventurerDetail, iceSlime);
                     return false;
+                    
                 },
 
                 Positive = new MazeGameDecisionResult { Result = MazeGameFlow.FireCavern },
@@ -42,7 +45,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     if (adventurerDetail.Class == (int)Class.Magician &&
-                        adventurerDetail.Specialisation == Specialisation.IceMage)
+                        adventurerDetail.Specialisation == (int)Specialisation.IceMage)
                     {
                         return true;
                     }
