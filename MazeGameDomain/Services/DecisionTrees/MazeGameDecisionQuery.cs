@@ -1,4 +1,5 @@
-﻿using MazeGameDomain.Enums;
+﻿using MazeGameDomain.Constants;
+using MazeGameDomain.Enums;
 
 namespace MazeGameDomain.Services.DecisionTrees
 {
@@ -13,6 +14,8 @@ namespace MazeGameDomain.Services.DecisionTrees
         public override MazeGameFlow EvaluateAsync() 
         {
             bool result = ProcessPhase();
+            Console.WriteLine(Title);
+            Console.WriteLine(InGameMessage.BlankRow);
 
             if (result)
             {

@@ -4,6 +4,7 @@
     {
         Town,
         IceCavern,
-        FireCavern
+        FireCavern,
+        Death
     }
 }

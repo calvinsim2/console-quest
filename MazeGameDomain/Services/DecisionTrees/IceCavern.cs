@@ -28,14 +28,13 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     IceCavernMonster iceSlime = iceCavernMonsterCreator.CreateMonster(IceCavernMonsters.GenerateIceSlime());
-                    
-                    //return Combat.CommenceCombat(adventurerDetail, iceSlime);
-                    return false;
+
+                    return Combat.CommenceCombat(adventurerDetail, iceSlime);
                     
                 },
 
                 Positive = new MazeGameDecisionResult { Result = MazeGameFlow.FireCavern },
-                Negative = new MazeGameDecisionResult { Result = MazeGameFlow.FireCavern }
+                Negative = new MazeGameDecisionResult { Result = MazeGameFlow.Death }
             };
 
             IsAdventurerIceResistant = new MazeGameDecisionQuery()

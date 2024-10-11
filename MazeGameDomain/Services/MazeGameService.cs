@@ -1,4 +1,5 @@
-﻿using MazeGameDomain.Enums;
+﻿using MazeGameDomain.Constants;
+using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces;
 using MazeGameDomain.Interfaces.DecisionTrees;
 using MazeGameDomain.Models;
@@ -38,6 +39,10 @@ namespace MazeGameDomain.Services
                         break;
 
                     case MazeGameFlow.FireCavern:
+                        break;
+
+                    case MazeGameFlow.Death:
+                        Console.WriteLine(InGameMessage.Death);
                         break;
 
                     default: break;

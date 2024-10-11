@@ -1,4 +1,6 @@
-﻿namespace MazeGameDomain.Constants
+﻿using MazeGameDomain.Models.Monsters;
+
+namespace MazeGameDomain.Constants
 {
     public static class InGameMessage
     {
@@ -29,8 +31,10 @@
 
         public static readonly string PromptCombatDecision = "Choose an action:" + "\n1 - Combat" + "\n2 - Items";
         public static readonly string InvalidCombatDecisionSelection = "Invalid decision selected, please input the correct decision.";
-
         public static readonly string PromptSkill = "Select a skill:";
+        public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
+        public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
+        public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You Died.";
 
         public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
         {
@@ -41,7 +45,24 @@
             return $"{index} - {skillName}, MP: {mpCost} (Not Enough Mana), Damage: {damage}";
         }
 
-        public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
-        public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
+        public static string MonsterAttackingInformation(string monsterName, string skillName, decimal monsterDamage)
+        {
+            return $"{monsterName} uses {skillName}!" + $"\n dealing {monsterDamage} Damage!";
+        }
+
+        public static string AdventurerCurrentHealth(decimal currentHealth)
+        {
+            return $"Your current Health: {currentHealth}";
+        }
+
+        public static string AdventurerAttackingInformation(string skillName, decimal skillDamage)
+        {
+            return $"You used {skillName}!" + $"\n dealing {skillDamage} Damage!";
+        }
+
+        public static string MonsterCurrentHealth(decimal currentHealth, string monsterName)
+        {
+            return $"{monsterName} current Health: {currentHealth}";
+        }
     }
 }
