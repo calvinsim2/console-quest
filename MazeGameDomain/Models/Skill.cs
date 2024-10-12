@@ -15,6 +15,8 @@
             Damage = damage;
             MpCost = mpCost;
         }
+
+        public MonsterSkill() { }
     }
 
     public class AdventurerSkill : Skill
@@ -25,5 +27,7 @@
             Damage = damage;
             MpCost = mpCost;
         }
+
+        public AdventurerSkill() { }
     }
 }

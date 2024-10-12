@@ -1,4 +1,5 @@
 ﻿using MazeGameApplication.Interfaces;
+using MazeGameDomain.Commons.Skills.Adventurer;
 using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces;
@@ -35,6 +36,7 @@ namespace MazeGameApplication.Services
 
             adventurer.Name = GetName();
             adventurer.Class = GetClass();
+            adventurer.Skills = AssignClassSkills(adventurer.Class);
             adventurer.Health = DetermineHealth(adventurer.Class);
 
             return adventurer;
@@ -92,6 +94,31 @@ namespace MazeGameApplication.Services
 
             return classSelection;
 
+        }
+
+        private ICollection<AdventurerSkill> AssignClassSkills(int adventurerClass)
+        {
+            List<AdventurerSkill> defaultSkills = new List<AdventurerSkill>();
+            Class adventurerClassEnum = (Class)adventurerClass;
+
+            switch (adventurerClassEnum)
+            {
+                case Class.Warrior:
+                    defaultSkills = WarriorSkills.WarriorDefaultSkills().ToList();
+                    break;
+
+                case Class.Magician:
+                    defaultSkills = MagicianSkills.MagicianDefaultSkills().ToList();
+                    break;
+
+                case Class.Bowman:
+                    defaultSkills = BowmanSkills.BowmanDefaultSkills().ToList();
+                    break;
+
+                default: break;
+            }
+
+            return defaultSkills;
         }
 
         private decimal DetermineHealth(int adventurerClass)

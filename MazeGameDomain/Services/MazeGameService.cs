@@ -23,9 +23,8 @@ namespace MazeGameDomain.Services
                                                       MazeGameFlow startingStep = MazeGameFlow.Town)
         {
             MazeGameFlow currentStep = startingStep;
-            MazeGameFlow breaktree = startingStep;
 
-            while (breaktree == startingStep)
+            while (currentStep != MazeGameFlow.EndGame)
             {
                 switch (currentStep)
                 {
@@ -42,7 +41,14 @@ namespace MazeGameDomain.Services
                         break;
 
                     case MazeGameFlow.Death:
-                        Console.WriteLine(InGameMessage.Death);
+                        currentStep = ExecuteDeathFlow();
+                        break;
+
+                    case MazeGameFlow.Victory:
+                        currentStep = ExecuteCompleteFlow();
+                        break;
+
+                    case MazeGameFlow.EndGame:
                         break;
 
                     default: break;
@@ -50,6 +56,24 @@ namespace MazeGameDomain.Services
             }
 
             return currentStep;
+        }
+
+        private MazeGameFlow ExecuteDeathFlow()
+        {
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.Death);
+            Console.WriteLine(InGameMessage.BlankRow);
+
+            return MazeGameFlow.EndGame;
+        }
+
+        private MazeGameFlow ExecuteCompleteFlow()
+        {
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.Complete);
+            Console.WriteLine(InGameMessage.BlankRow);
+
+            return MazeGameFlow.EndGame;
         }
     }
 }
