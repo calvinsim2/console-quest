@@ -5,6 +5,9 @@
         Town,
         IceCavern,
         FireCavern,
-        Death
+        Death,
+        Victory,
+        EndGame
+           
     }
 }

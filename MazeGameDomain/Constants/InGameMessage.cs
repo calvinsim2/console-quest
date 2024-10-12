@@ -35,6 +35,8 @@ namespace MazeGameDomain.Constants
         public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
         public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
         public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You Died.";
+        public static readonly string Complete = "You stand triumphant, as you melted the final foe that stands in your way!" + 
+                    "\nCongratulations! You Win!";
 
         public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
         {
