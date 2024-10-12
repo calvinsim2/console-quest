@@ -15,10 +15,10 @@ namespace MazeGameApplication.Services
             _mazeGameService = mazeGameService;
         }
 
-        public async Task InvokeGame()
+        public void InvokeGame()
         {
             MazeGameDataModel mazeGameDataModel = GetGameRequiredDetails();
-            await _mazeGameService.StartGame(mazeGameDataModel);
+            _mazeGameService.StartGame(mazeGameDataModel);
         } 
 
         private MazeGameDataModel GetGameRequiredDetails()
@@ -78,6 +78,7 @@ namespace MazeGameApplication.Services
                 {
                     Console.WriteLine(InGameMessage.InvalidClassSelection);
                     Console.WriteLine(InGameMessage.BlankRow);
+                    continue;
                 }
 
                 classSelection = Convert.ToInt32(userInput);
@@ -86,6 +87,7 @@ namespace MazeGameApplication.Services
                 Class selectedClass = (Class)classSelection;
 
                 Console.WriteLine($"You selected: {selectedClass}");
+                validClassSelection = true;
             }
 
             return classSelection;

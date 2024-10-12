@@ -15,9 +15,9 @@ namespace MazeGameApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> InvokeMazeGame()
+        public IActionResult InvokeMazeGame()
         {
-            await _mazeGameApplicationService.InvokeGame();
+            _mazeGameApplicationService.InvokeGame();
             return Ok();
         }
     }

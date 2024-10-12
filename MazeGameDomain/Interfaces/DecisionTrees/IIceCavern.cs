@@ -5,6 +5,6 @@ namespace MazeGameDomain.Interfaces.DecisionTrees
 {
     public interface IIceCavern
     {
-        Task<MazeGameDecisionQuery> TransverseIceCavernAsync(MazeGameDataModel mazeGameDataModel);
+        MazeGameDecisionQuery TransverseIceCavernAsync(MazeGameDataModel mazeGameDataModel);
     }
 }
