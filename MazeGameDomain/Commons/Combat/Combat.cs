@@ -78,6 +78,8 @@ namespace MazeGameDomain.Commons.Combat
             }
         }
 
+        #region Monster and Player attacks function
+
         public static void MonsterAttacks(MonsterSkill monsterSkill, Adventurer adventurer, Monster monster)
         {
             decimal monsterDamage = monsterSkill.Damage;
@@ -101,7 +103,9 @@ namespace MazeGameDomain.Commons.Combat
             Console.WriteLine(InGameMessage.BlankRow);
             adventurer.DecreaseMP(manaCost);
         }
+        #endregion
 
+        #region Monster Decision
         public static MonsterSkill MonsterDecision(Monster monster)
         {
             List<MonsterSkill> availableMonsterSkills = monster.MonsterSkills.Where(x => monster.MP >= x.MpCost).ToList(); 
@@ -111,7 +115,9 @@ namespace MazeGameDomain.Commons.Combat
 
             return availableMonsterSkills[randomChoice];
         }
+        #endregion
 
+        #region Player Input Subroutine
         public static AdventurerSkill? PlayerInput(Adventurer adventurer)
         {
             AdventurerCombatDecision adventurerCombatDecision = new AdventurerCombatDecision();
@@ -142,6 +148,7 @@ namespace MazeGameDomain.Commons.Combat
             return adventurerCombatDecision.SelectedAdventurerSkill;
         }
 
+        #region Player Combat Input Related
         public static void PlayerCombatInput(Adventurer adventurer, AdventurerCombatDecision adventurerCombatDecision)
         {
             Console.WriteLine(InGameMessage.PromptSkill);
@@ -243,5 +250,16 @@ namespace MazeGameDomain.Commons.Combat
 
             return adventurerSkills[userInput];
         }
+
+        #endregion
+
+        #region Player Item Input Related
+        public static void PlayerItemInput(Adventurer adventurer, AdventurerCombatDecision adventurerCombatDecision)
+        {
+
+        }
+        #endregion
+
+        #endregion
     }
 }

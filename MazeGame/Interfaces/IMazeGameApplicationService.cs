@@ -2,6 +2,6 @@
 {
     public interface IMazeGameApplicationService
     {
-        Task InvokeGame();
+        void InvokeGame();
     }
 }

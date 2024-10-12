@@ -16,7 +16,7 @@ namespace MazeGameDomain.Services.DecisionTrees
         public MazeGameDecisionQuery IsAdventurerIceResistant { get; set; }
 
 
-        public async Task<MazeGameDecisionQuery> TransverseIceCavernAsync(MazeGameDataModel mazeGameDataModel)
+        public MazeGameDecisionQuery TransverseIceCavernAsync(MazeGameDataModel mazeGameDataModel)
         {
             Adventurer adventurerDetail = mazeGameDataModel.Adventurer;
             IceCavernMonsterCreator iceCavernMonsterCreator = new IceCavernMonsterCreator();
