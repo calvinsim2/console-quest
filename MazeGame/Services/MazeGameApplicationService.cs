@@ -1,5 +1,5 @@
 ﻿using MazeGameApplication.Interfaces;
-using MazeGameDomain.Commons.Skills.Adventurer;
+using MazeGameDomain.Commons.Skills;
 using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces;
@@ -104,15 +104,15 @@ namespace MazeGameApplication.Services
             switch (adventurerClassEnum)
             {
                 case Class.Warrior:
-                    defaultSkills = WarriorSkills.WarriorDefaultSkills().ToList();
+                    defaultSkills = AdventurerSkillsCreation.WarriorDefaultSkills().ToList();
                     break;
 
                 case Class.Magician:
-                    defaultSkills = MagicianSkills.MagicianDefaultSkills().ToList();
+                    defaultSkills = AdventurerSkillsCreation.MagicianDefaultSkills().ToList();
                     break;
 
                 case Class.Bowman:
-                    defaultSkills = BowmanSkills.BowmanDefaultSkills().ToList();
+                    defaultSkills = AdventurerSkillsCreation.BowmanDefaultSkills().ToList();
                     break;
 
                 default: break;
