@@ -99,7 +99,7 @@ namespace MazeGameDomain.Commons.Combat
 
             Console.WriteLine(InGameMessage.AdventurerAttackingInformation(adventurerSkill.SkillName, adventurerDamage));
             monster.DecreaseHealth(adventurerDamage);
-            Console.WriteLine(InGameMessage.MonsterCurrentHealth(adventurer.Health, monster.Name));
+            Console.WriteLine(InGameMessage.MonsterCurrentHealth(monster.Health, monster.Name));
             Console.WriteLine(InGameMessage.BlankRow);
             adventurer.DecreaseMP(manaCost);
         }
@@ -157,6 +157,7 @@ namespace MazeGameDomain.Commons.Combat
             while (true)
             {
                 DisplayPlayerSkills(adventurer.Skills, adventurer.MP);
+                Console.WriteLine(InGameMessage.BackMessage);
                 Console.WriteLine(InGameMessage.BlankRow);
 
                 string? userInput = Console.ReadLine();
@@ -175,13 +176,14 @@ namespace MazeGameDomain.Commons.Combat
                     return;
                 }
 
-                if (IsMPSufficientForSkill(decision, adventurer.Skills, adventurer.MP))
+                if (!IsMPSufficientForSkill(decision, adventurer.Skills, adventurer.MP))
                 {
                     continue;
                 }
 
                 adventurerCombatDecision.SelectedAdventurerSkill = GetPlayerSelectedSkill(decision, adventurer);
                 adventurerCombatDecision.PlayerDecided = true;
+                return;
 
             }
         }
@@ -192,7 +194,7 @@ namespace MazeGameDomain.Commons.Combat
 
             for (int i = 0; i < adventurerSkills.Count; i++)
             {
-                if (adventurerMP > adventurerSkills[i].MpCost)
+                if (adventurerMP >= adventurerSkills[i].MpCost)
                 {
                     Console.WriteLine(InGameMessage.AdventurerSkillMessage(i, adventurerSkills[i].SkillName, adventurerSkills[i].MpCost, adventurerSkills[i].Damage));
                 }
@@ -220,6 +222,7 @@ namespace MazeGameDomain.Commons.Combat
             if (!validSkill)
             {
                 Console.WriteLine(InGameMessage.InvalidSkillOptionSelection);
+                Console.WriteLine(InGameMessage.BlankRow);
                 return false;
             }
 
@@ -236,6 +239,7 @@ namespace MazeGameDomain.Commons.Combat
             if (adventurerMP < selectedSkill.MpCost)
             {
                 Console.WriteLine(InGameMessage.InsufficentManaSelection);
+                Console.WriteLine(InGameMessage.BlankRow);
                 return false;
             }
             else
