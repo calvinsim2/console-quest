@@ -13,9 +13,10 @@ namespace MazeGameDomain.Services.DecisionTrees
 
         public override MazeGameFlow EvaluateAsync() 
         {
-            bool result = ProcessPhase();
             Console.WriteLine(Title);
             Console.WriteLine(InGameMessage.BlankRow);
+
+            bool result = ProcessPhase();
 
             if (result)
             {

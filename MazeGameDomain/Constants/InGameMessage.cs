@@ -34,6 +34,12 @@ namespace MazeGameDomain.Constants
         public static readonly string PromptSkill = "Select a skill:";
         public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
         public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
+        public static readonly string BackMessage = "99 - Back";
+
+
+        public static readonly string Town = "Welcome Adventurer, it seems like trouble are surfacing again in the dungeons, townsfolk are lamenting" + 
+            "\non the fact that attacks on the town from monsters are getting more frequent." + "\nCan you be their hero, and resolve these problems once and for all?";
+        public static readonly string IceCavern = "Entering: Ice Cavern........";
         public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You Died.";
         public static readonly string Complete = "You stand triumphant, as you melted the final foe that stands in your way!" + 
                     "\nCongratulations! You Win!";

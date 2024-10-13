@@ -29,12 +29,11 @@ namespace MazeGameDomain.Services
                 switch (currentStep)
                 {
                     case MazeGameFlow.Town:
-                        currentStep = MazeGameFlow.IceCavern;
+                        currentStep = ExecuteTownFlow(mazeGameDataModel);
                         break;
 
                     case MazeGameFlow.IceCavern:
-                        MazeGameDecisionQuery iceCavernCreate = _iceCavern.TransverseIceCavernAsync(mazeGameDataModel);
-                        currentStep = iceCavernCreate.EvaluateAsync();
+                        currentStep = ExecuteIceCavernFlow(mazeGameDataModel);
                         break;
 
                     case MazeGameFlow.FireCavern:
@@ -54,6 +53,25 @@ namespace MazeGameDomain.Services
                     default: break;
                 }
             }
+
+            return currentStep;
+        }
+
+        private MazeGameFlow ExecuteTownFlow(MazeGameDataModel mazeGameDataModel)
+        {
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.Town);
+            Console.WriteLine(InGameMessage.BlankRow);
+            return MazeGameFlow.IceCavern;
+        }
+
+        private MazeGameFlow ExecuteIceCavernFlow(MazeGameDataModel mazeGameDataModel)
+        {
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.IceCavern);
+            Console.WriteLine(InGameMessage.BlankRow);
+            MazeGameDecisionQuery iceCavernCreate = _iceCavern.TransverseIceCavernAsync(mazeGameDataModel);
+            MazeGameFlow currentStep = iceCavernCreate.EvaluateAsync();
 
             return currentStep;
         }
