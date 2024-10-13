@@ -38,6 +38,7 @@ namespace MazeGameApplication.Services
             adventurer.Class = GetClass();
             adventurer.Skills = AssignClassSkills(adventurer.Class);
             adventurer.Health = DetermineHealth(adventurer.Class);
+            adventurer.MP = DetermineMP(adventurer.Class);
 
             return adventurer;
 
@@ -134,6 +135,24 @@ namespace MazeGameApplication.Services
 
                 case Class.Magician:
                     baseHealth *= 0.75m;
+                    break;
+
+                default: break;
+            }
+
+            return baseHealth;
+        }
+
+        private decimal DetermineMP(int adventurerClass)
+        {
+            decimal baseHealth = 100m;
+            Class adventurerClassEnum = (Class)adventurerClass;
+
+            switch (adventurerClassEnum)
+            {
+
+                case Class.Magician:
+                    baseHealth *= 2m;
                     break;
 
                 default: break;

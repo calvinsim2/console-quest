@@ -12,15 +12,27 @@ namespace MazeGameDomain.Builders
             return this;
         }
 
-        public SkillBuilder<T> SetDamage(decimal damage)
+        public SkillBuilder<T> SetEffectPower(decimal effectPower)
         {
-            skill.Damage = damage;
+            skill.EffectPower = effectPower;
             return this;
         }
 
         public SkillBuilder<T> SetMpCost(decimal mpCost)
         {
             skill.MpCost = mpCost;
+            return this;
+        }
+
+        public SkillBuilder<T> SetIsUtility(bool isUtility)
+        {
+            skill.IsUtility = isUtility;
+            return this;
+        }
+
+        public SkillBuilder<T> SetAttributeTarget(int setAttributeTarget)
+        {
+            skill.AttributeTarget = setAttributeTarget;
             return this;
         }
 
