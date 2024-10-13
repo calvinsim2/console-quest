@@ -1,4 +1,5 @@
-﻿using MazeGameDomain.Models.Monsters;
+﻿using MazeGameDomain.Models;
+using MazeGameDomain.Models.Monsters;
 
 namespace MazeGameDomain.Constants
 {
@@ -29,7 +30,7 @@ namespace MazeGameDomain.Constants
             "\n 2 - Magician" +
             "\n 3 - Archer";
 
-        public static readonly string PromptCombatDecision = "Choose an action:" + "\n1 - Combat" + "\n2 - Items";
+        public static readonly string PromptCombatDecision = "Choose an action:" + "\n1 - Combat" + "\n2 - Items" + "\n90 - Read Current Status";
         public static readonly string InvalidCombatDecisionSelection = "Invalid decision selected, please input the correct decision.";
         public static readonly string PromptSkill = "Select a skill:";
         public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
@@ -44,6 +45,11 @@ namespace MazeGameDomain.Constants
         public static readonly string Complete = "You stand triumphant, as you melted the final foe that stands in your way!" + 
                     "\nCongratulations! You Win!";
 
+        public static string ReadCurrentStatus(Adventurer adventurer, Monster monster)
+        {
+            return $"Player - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {adventurer.Class}" +
+                $"\nMonster - HP: {monster.Health}, HP: {monster.MP}";
+        }
         public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
         {
             return $"{index} - {skillName}, MP: {mpCost}, Damage: {damage}";
@@ -71,6 +77,11 @@ namespace MazeGameDomain.Constants
         public static string MonsterCurrentHealth(decimal currentHealth, string monsterName)
         {
             return $"{monsterName} current Health: {currentHealth}";
+        }
+
+        public static string AdventurerUtilityInformation(string skillName, string attributeType, decimal skillDamage)
+        {
+            return $"You used {skillName}!" + $"\nyour {attributeType} is increased by {skillDamage}.";
         }
     }
 }
