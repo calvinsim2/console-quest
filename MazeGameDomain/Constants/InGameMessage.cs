@@ -49,7 +49,8 @@ namespace MazeGameDomain.Constants
 
 
         public static readonly string Town = "Welcome Adventurer, it seems like trouble are surfacing again in the dungeons, townsfolk are lamenting" + 
-            "\non the fact that attacks on the town from monsters are getting more frequent." + "\nCan you be their hero, and resolve these problems once and for all?";
+            "\non the fact that attacks on the town from monsters in the nearby dungeons are getting more frequent." + 
+            "\nCan you be their hero, transverse and clear out those dungeons, and resolve these problems once and for all?";
         
         /// <summary>
         /// Message used for Ice Cavern Map
@@ -68,20 +69,26 @@ namespace MazeGameDomain.Constants
         /// <summary>
         /// Message used for Victory Flow
         /// </summary>
-        public static readonly string Complete = "You stand triumphant, as you melted the final foe that stands in your way!" + 
-                    "\nCongratulations! You Win!";
+        public static readonly string Complete = "You successfully completed all the dungeons and melted the all foes that stands in your way!" + 
+                    "\nAs you return to town triumphant, villagers celebrate your return and praises your bravery!" +
+                    "\nCongratulations! Adventurer!";
 
         public static readonly string InvalidPathSelected = "Invalid Path selected, please input the correct Path.";
         
         public static readonly string AvoidedTrap = "You sucessfully avoided the trap!";
 
+        public static void Introduction()
+        {
+            Console.WriteLine("Welcome to ConsoleQuest, an adventure game which is solely interactable via console app.");
+            Console.WriteLine("Note: In non-decision situations, there won't be a prompt. Press ANY key to continue whenever an in-game message appears in the console app.");
+        }
         public static string DisplayAdventurerSelectedSpecialisation(int specialisation)
         {
             return $"You have chosen to be a/an {(Specialisation)specialisation}";
         }
         public static string ReadCurrentStatus(Adventurer adventurer, Monster monster)
         {
-            return $"Player - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {adventurer.Class}" +
+            return $"Player - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {(Class)adventurer.Class}" +
                 $"\nMonster - HP: {monster.Health}, HP: {monster.MP}";
         }
         public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
@@ -123,6 +130,10 @@ namespace MazeGameDomain.Constants
             return "Make your choice: " + $"\n1 - {option1}" + $"\n2 - {option2}";
         }
 
+        public static string DisplayForkRoadDecisions(string option)
+        {
+            return $"You have chosen: {option}";
+        }
         public static string DisplayCurrentTrapNavigation(int trapIndex)
         {
             return $"Weaving through trap{trapIndex}";

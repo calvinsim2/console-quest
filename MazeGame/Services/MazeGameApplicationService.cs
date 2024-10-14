@@ -1,4 +1,5 @@
-﻿using MazeGameApplication.Interfaces;
+﻿using Figgle;
+using MazeGameApplication.Interfaces;
 using MazeGameDomain.Commons.Skills;
 using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
@@ -18,6 +19,8 @@ namespace MazeGameApplication.Services
 
         public void InvokeGame()
         {
+            Console.WriteLine(FiggleFonts.Standard.Render("ConsoleQuest"));
+            InGameMessage.Introduction();
             MazeGameDataModel mazeGameDataModel = GetGameRequiredDetails();
             _mazeGameService.StartGame(mazeGameDataModel);
         } 
@@ -112,7 +115,7 @@ namespace MazeGameApplication.Services
                     defaultSkills = AdventurerSkillsCreation.MagicianDefaultSkills().ToList();
                     break;
 
-                case Class.Bowman:
+                case Class.Archer:
                     defaultSkills = AdventurerSkillsCreation.BowmanDefaultSkills().ToList();
                     break;
 

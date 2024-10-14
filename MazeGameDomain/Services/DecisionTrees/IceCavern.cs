@@ -35,8 +35,6 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 ProcessPhase = () =>
                 {
-                    Console.WriteLine(InGameMessage.PressAnyKeyToContinue);
-                    Console.ReadKey(intercept: true);
                     return true;
 
                 },
@@ -82,7 +80,6 @@ namespace MazeGameDomain.Services.DecisionTrees
                     for (int i = 1; i <= n; i++)
                     {
                         Console.WriteLine(InGameMessage.DisplayCurrentTrapNavigation(i));
-                        Console.WriteLine(InGameMessage.PressAnyKeyToContinue);
                         Console.ReadKey(intercept: true);
 
                         Random random = new Random();
@@ -97,6 +94,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                         decimal damageTaken = i * 5;
                         Console.WriteLine(InGameMessage.DisplayUnableToAvoidTrapMessage(damageTaken));
                         adventurerDetail.DecreaseHealth(damageTaken);
+                        Console.WriteLine(InGameMessage.AdventurerCurrentHealth(adventurerDetail.Health));
 
                         if (adventurerDetail.Health <= 0)
                         {
@@ -120,6 +118,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     adventurerDetail.IncreaseHealth(10);
+                    Console.WriteLine(InGameMessage.AdventurerCurrentHealth(adventurerDetail.Health));
                     return true;
 
                 },
@@ -134,6 +133,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     adventurerDetail.DecreaseHealth(10);
+                    Console.WriteLine(InGameMessage.AdventurerCurrentHealth(adventurerDetail.Health));
 
                     return adventurerDetail.Health > 0;
                 },
