@@ -13,5 +13,24 @@ namespace MazeGameDomain.Commons.GenerateMonsters
 
             return iceSlime;
         }
+
+        public static IceCavernMonsterParameter GenerateIceBoar()
+        {
+            MonsterSkill icyCharge = MonsterSkillsCreation.MonsterCustomOffensiveSkill("Icy Charge", 10, 0);
+            MonsterSkill coldTuskImpale = MonsterSkillsCreation.MonsterCustomOffensiveSkill("Cold Tusk Impale", 20, 10);
+            IceCavernMonsterParameter iceBoar = new IceCavernMonsterParameter("Ice Boar", 50, 20, new List<MonsterSkill> { icyCharge, coldTuskImpale });
+
+            return iceBoar;
+        }
+
+        public static IceCavernMonsterParameter GenerateIceYeti()
+        {
+            MonsterSkill iceFist = MonsterSkillsCreation.MonsterCustomOffensiveSkill("Ice Fist", 10, 0);
+            MonsterSkill icyHowl = MonsterSkillsCreation.MonsterCustomOffensiveSkill("Icy Howl", 15, 10);
+            MonsterSkill earthQuake = MonsterSkillsCreation.MonsterCustomOffensiveSkill("EarthQuake", 40, 30);
+            IceCavernMonsterParameter iceYeti = new IceCavernMonsterParameter("Ice Yeti", 70, 40, new List<MonsterSkill> { iceFist, icyHowl, earthQuake });
+
+            return iceYeti;
+        }
     }
 }

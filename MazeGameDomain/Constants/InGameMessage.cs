@@ -1,10 +1,12 @@
-﻿using MazeGameDomain.Models;
+﻿using MazeGameDomain.Enums;
+using MazeGameDomain.Models;
 using MazeGameDomain.Models.Monsters;
 
 namespace MazeGameDomain.Constants
 {
     public static class InGameMessage
     {
+        public static readonly string PressAnyKeyToContinue = "Press any key to continue...";
         public static readonly string BlankRow = string.Empty;
         public static readonly string PromptName = "Insert your Name:";
         public static readonly string ChooseClass = "Choose your desired Class....";
@@ -30,21 +32,53 @@ namespace MazeGameDomain.Constants
             "\n 2 - Magician" +
             "\n 3 - Archer";
 
-        public static readonly string PromptCombatDecision = "Choose an action:" + "\n1 - Combat" + "\n2 - Items" + "\n90 - Read Current Status";
+        public static readonly string InvalidSpecialisationSelected = "Invalid Specialisation Selected.";
+
+        public static readonly string PromptMagicianSpecialisation = "Select your Specialisation:" +
+            "\n 1 - Ice Mage" +
+            "\n 2 - Fire Mage";
+
+        public static readonly string MagicianSpecialisationDescription = "Prior to leaving the town, an elder stops you for a quick chat" + 
+            "\nAs a magician, you are eligible to specialise in either Fire or Ice magic, he has the capability to grant you such powers immediately";
+        public static readonly string PromptCombatDecision = "Choose an action:" + "\n1 - Combat" + "\n2 - Items" + "\n8 - Read Current Status";
         public static readonly string InvalidCombatDecisionSelection = "Invalid decision selected, please input the correct decision.";
         public static readonly string PromptSkill = "Select a skill:";
         public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
         public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
-        public static readonly string BackMessage = "99 - Back";
+        public static readonly string BackMessage = "9 - Back";
 
 
         public static readonly string Town = "Welcome Adventurer, it seems like trouble are surfacing again in the dungeons, townsfolk are lamenting" + 
             "\non the fact that attacks on the town from monsters are getting more frequent." + "\nCan you be their hero, and resolve these problems once and for all?";
+        
+        /// <summary>
+        /// Message used for Ice Cavern Map
+        /// </summary>
         public static readonly string IceCavern = "Entering: Ice Cavern........";
+        public static readonly string IceResistant = "You are blessed with resistance to ice, proceeding to next dungeon....";
+        public static readonly string NotIceResistant = "Unable to escape the cold, frozen cavern, you are forced to venture deeper into the cavern...";
+        public static readonly string DefeatIceSlime = "The ice slime melts, you venture on further....";
+        public static readonly string DefeatIceBoar = "The boar make multiple squeaking sounds and eventually falls, time to move on!";
+        public static readonly string DefeatIceYeti = "Yeti releases a huge howl, and falls to its knees!";
+
+        /// <summary>
+        /// Message used for Death Flow
+        /// </summary>
         public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You Died.";
+        /// <summary>
+        /// Message used for Victory Flow
+        /// </summary>
         public static readonly string Complete = "You stand triumphant, as you melted the final foe that stands in your way!" + 
                     "\nCongratulations! You Win!";
 
+        public static readonly string InvalidPathSelected = "Invalid Path selected, please input the correct Path.";
+        
+        public static readonly string AvoidedTrap = "You sucessfully avoided the trap!";
+
+        public static string DisplayAdventurerSelectedSpecialisation(int specialisation)
+        {
+            return $"You have chosen to be a/an {(Specialisation)specialisation}";
+        }
         public static string ReadCurrentStatus(Adventurer adventurer, Monster monster)
         {
             return $"Player - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {adventurer.Class}" +
@@ -82,6 +116,21 @@ namespace MazeGameDomain.Constants
         public static string AdventurerUtilityInformation(string skillName, string attributeType, decimal skillDamage)
         {
             return $"You used {skillName}!" + $"\nyour {attributeType} is increased by {skillDamage}.";
+        }
+
+        public static string PromptForkRoadOptions(string option1, string option2)
+        {
+            return "Make your choice: " + $"\n1 - {option1}" + $"\n2 - {option2}";
+        }
+
+        public static string DisplayCurrentTrapNavigation(int trapIndex)
+        {
+            return $"Weaving through trap{trapIndex}";
+        }
+
+        public static string DisplayUnableToAvoidTrapMessage(decimal damageTaken)
+        {
+            return $"You are unable to avoid the trap in time, it connects, and you took {damageTaken} damage.";
         }
     }
 }
