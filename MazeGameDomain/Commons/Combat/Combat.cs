@@ -190,7 +190,7 @@ namespace MazeGameDomain.Commons.Combat
             while (!adventurerCombatDecision.PlayerDecided)
             {
                 Console.WriteLine(InGameMessage.PromptCombatDecision);
-                string? userInput = Console.ReadLine();
+                string userInput = Console.ReadKey(intercept: true).KeyChar.ToString();
 
                 if (!IsValidCombatDecision(userInput))
                 {
@@ -239,7 +239,7 @@ namespace MazeGameDomain.Commons.Combat
                 Console.WriteLine(InGameMessage.BackMessage);
                 Console.WriteLine(InGameMessage.BlankRow);
 
-                string? userInput = Console.ReadLine();
+                string userInput = Console.ReadKey(intercept: true).KeyChar.ToString();
 
                 if (!IsValidSkillSelected(userInput, adventurer.Skills))
                 {

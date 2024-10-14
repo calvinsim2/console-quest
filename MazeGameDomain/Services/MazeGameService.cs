@@ -1,4 +1,5 @@
-﻿using MazeGameDomain.Constants;
+﻿using MazeGameDomain.Commons;
+using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces;
 using MazeGameDomain.Interfaces.DecisionTrees;
@@ -62,6 +63,10 @@ namespace MazeGameDomain.Services
             Console.WriteLine(InGameMessage.BlankRow);
             Console.WriteLine(InGameMessage.Town);
             Console.WriteLine(InGameMessage.BlankRow);
+            AdventurerEnhancement.AssignSpecialisation(mazeGameDataModel);
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.PressAnyKeyToContinue);
+            Console.ReadKey(intercept: true);
             return MazeGameFlow.IceCavern;
         }
 

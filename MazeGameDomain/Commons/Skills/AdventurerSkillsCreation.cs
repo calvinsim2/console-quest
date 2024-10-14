@@ -48,7 +48,7 @@ namespace MazeGameDomain.Commons.Skills
             AdventurerSkill doubleShot = new AdventurerSkillBuilder().SetName("Double Shot").SetEffectPower(15m).SetMpCost(0m).Build();
             AdventurerSkill arrowBlow = new AdventurerSkillBuilder().SetName("Arrow Blow").SetEffectPower(25m).SetMpCost(10m).Build();
             defaultSkills.Add(doubleShot);
-            defaultSkills.Add(doubleShot);
+            defaultSkills.Add(arrowBlow);
 
             return defaultSkills;
         }

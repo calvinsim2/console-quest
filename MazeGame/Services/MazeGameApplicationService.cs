@@ -75,7 +75,7 @@ namespace MazeGameApplication.Services
 
             while (!validClassSelection)
             {
-                string userInput = Console.ReadLine();
+                string userInput = Console.ReadKey(intercept: true).KeyChar.ToString();
 
                 if (!validClasses.Contains(userInput))
                 {
