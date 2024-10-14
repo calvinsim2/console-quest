@@ -14,7 +14,7 @@ namespace MazeGameDomain.Commons.Combat
                 Console.WriteLine(InGameMessage.PromptForkRoadOptions(option1, option2));
                 Console.WriteLine(InGameMessage.BlankRow);
 
-                string? userInput = Console.ReadLine();
+                string userInput = Console.ReadKey(intercept: true).KeyChar.ToString();
 
                 List<int> validPathChoice = new List<int> { 1, 2 };
 
@@ -32,6 +32,8 @@ namespace MazeGameDomain.Commons.Combat
             }
 
             bool isFirstPathChosen = pathChoice == 1;
+            string chosenPathName = isFirstPathChosen ? option1 : option2;
+            Console.WriteLine(InGameMessage.DisplayForkRoadDecisions(chosenPathName));
 
             return isFirstPathChosen;
         }

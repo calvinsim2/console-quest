@@ -18,6 +18,9 @@ namespace MazeGameDomain.Services.DecisionTrees
 
             bool result = ProcessPhase();
 
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.ReadKey(intercept: true);
+
             if (result)
             {
                 return Positive!.EvaluateAsync();

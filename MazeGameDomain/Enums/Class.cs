@@ -5,6 +5,6 @@
         None,
         Warrior,
         Magician,
-        Bowman
+        Archer
     }
 }
