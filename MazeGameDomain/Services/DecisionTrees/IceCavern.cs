@@ -5,7 +5,6 @@ using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces.DecisionTrees;
 using MazeGameDomain.ModelCreators;
 using MazeGameDomain.Models;
-using MazeGameDomain.Models.Monsters;
 
 namespace MazeGameDomain.Services.DecisionTrees
 {

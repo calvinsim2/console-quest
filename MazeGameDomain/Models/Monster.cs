@@ -1,7 +1,6 @@
 ﻿using MazeGameDomain.Interfaces;
-using MazeGameDomain.Interfaces.Monsters;
 
-namespace MazeGameDomain.Models.Monsters
+namespace MazeGameDomain.Models
 {
     public abstract class Monster : IMonster, IAttributes
     {
