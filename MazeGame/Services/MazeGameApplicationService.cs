@@ -42,6 +42,7 @@ namespace MazeGameApplication.Services
             adventurer.Skills = AssignClassSkills(adventurer.Class);
             adventurer.Health = DetermineHealth(adventurer.Class);
             adventurer.MP = DetermineMP(adventurer.Class);
+            adventurer.Inventory = AssignStartingInventories();
 
             return adventurer;
 
@@ -125,6 +126,11 @@ namespace MazeGameApplication.Services
             return defaultSkills;
         }
 
+        public Dictionary<int, int> AssignStartingInventories()
+        {
+            return new Dictionary<int, int> { { (int)ItemIndex.HpPotion, 3 }, { (int)ItemIndex.MpPotion, 1 } };
+        }
+
         private decimal DetermineHealth(int adventurerClass)
         {
             decimal baseHealth = 100m;
@@ -148,20 +154,20 @@ namespace MazeGameApplication.Services
 
         private decimal DetermineMP(int adventurerClass)
         {
-            decimal baseHealth = 100m;
+            decimal baseMp = 100m;
             Class adventurerClassEnum = (Class)adventurerClass;
 
             switch (adventurerClassEnum)
             {
 
                 case Class.Magician:
-                    baseHealth *= 2m;
+                    baseMp *= 2m;
                     break;
 
                 default: break;
             }
 
-            return baseHealth;
+            return baseMp;
         }
     }
 }

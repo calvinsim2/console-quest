@@ -17,8 +17,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
         {
             Name = "Annoying NBAK",
             Class = (int)Class.Magician,
-            Specialisation = (int)Specialisation.IceMage,
-            Inventory = new List<string>()
+            Specialisation = (int)Specialisation.IceMage
         };
 
         private static readonly MazeGameDataModel MazeGameDataModelMock = new MazeGameDataModel

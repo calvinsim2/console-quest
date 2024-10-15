@@ -1,4 +1,5 @@
-﻿using MazeGameDomain.Constants;
+﻿using MazeGameDomain.Commons.Items;
+using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Models;
 
@@ -39,8 +40,6 @@ namespace MazeGameDomain.Commons.Combat
         public static void EntitiesInteraction(AdventurerSkill? adventurerSkill, MonsterSkill monsterSkill, 
                                                Adventurer adventurer, Monster monster)
         {
-            // if playerskill is null, compute monster's attack only
-            
             if (adventurerSkill is null)
             {
                 if (monsterSkill.IsUtility)
@@ -133,7 +132,7 @@ namespace MazeGameDomain.Commons.Combat
 
             switch (attributetype)
             {
-                case AttributeType.Health:
+                case AttributeType.HP:
                     monster.IncreaseHealth(monsterSkill.EffectPower);
                     Console.WriteLine(InGameMessage.AdventurerUtilityInformation(monsterSkill.SkillName, nameof(attributetype), monsterSkill.EffectPower));
                     break;
@@ -153,14 +152,16 @@ namespace MazeGameDomain.Commons.Combat
 
             switch(attributetype) 
             {
-                case AttributeType.Health:
+                case AttributeType.HP:
                     adventurer.IncreaseHealth(adventurerSkill.EffectPower);
                     Console.WriteLine(InGameMessage.AdventurerUtilityInformation(adventurerSkill.SkillName, attributetype.ToString(), adventurerSkill.EffectPower));
+                    Console.WriteLine(InGameMessage.AdventurerCurrentHealth(adventurer.Health));
                     break;
 
                 case AttributeType.MP:
                     adventurer.IncreaseMP(adventurerSkill.EffectPower);
                     Console.WriteLine(InGameMessage.AdventurerUtilityInformation(adventurerSkill.SkillName, attributetype.ToString(), adventurerSkill.EffectPower));
+                    Console.WriteLine(InGameMessage.AdventurerCurrentMP(adventurer.MP));
                     break;
 
                 default: break;
@@ -211,7 +212,7 @@ namespace MazeGameDomain.Commons.Combat
                 }
                 else
                 {
-                    adventurerCombatDecision.SelectedAdventurerSkill = null;
+                    ItemUtilisation.PlayerItemInput(adventurer, adventurerCombatDecision);
                 }
 
             }
@@ -356,13 +357,6 @@ namespace MazeGameDomain.Commons.Combat
             return adventurerSkills[userInput];
         }
 
-        #endregion
-
-        #region Player Item Input Related
-        public static void PlayerItemInput(Adventurer adventurer, AdventurerCombatDecision adventurerCombatDecision)
-        {
-
-        }
         #endregion
 
         #endregion

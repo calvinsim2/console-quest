@@ -10,7 +10,7 @@ namespace MazeGameDomain.Models
         public int Class { get; set; }
         public int Specialisation { get; set; }
         public ICollection<AdventurerSkill> Skills { get; set; }
-        public ICollection<string> Inventory { get; set; } = new List<string>();
+        public Dictionary<int, int> Inventory { get; set; } = new Dictionary<int, int>(); 
 
         public Adventurer() { }
 
