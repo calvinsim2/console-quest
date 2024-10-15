@@ -1,8 +1,6 @@
 ﻿using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Models;
-using MazeGameDomain.Models.Monsters;
-using System.Linq;
 
 namespace MazeGameDomain.Commons.Combat
 {

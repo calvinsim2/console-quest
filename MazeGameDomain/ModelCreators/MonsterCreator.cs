@@ -1,6 +1,6 @@
-﻿using MazeGameDomain.Interfaces.Monsters;
+﻿using MazeGameDomain.Interfaces;
 using MazeGameDomain.ModelParameters;
-using MazeGameDomain.Models.Monsters;
+using MazeGameDomain.Models;
 
 namespace MazeGameDomain.ModelCreators
 {
