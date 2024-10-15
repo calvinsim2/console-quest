@@ -34,7 +34,7 @@ namespace MazeGameDomain.Commons.Skills
             List<AdventurerSkill> defaultSkills = new List<AdventurerSkill>();
 
             AdventurerSkill magicClaw = new AdventurerSkillBuilder().SetName("Magic Claw").SetEffectPower(15m).SetMpCost(0m).Build();
-            AdventurerSkill quantumExplosion = new AdventurerSkillBuilder().SetName("Quantum Explosion").SetEffectPower(30m).SetMpCost(15m).Build();
+            AdventurerSkill quantumExplosion = new AdventurerSkillBuilder().SetName("Quantum Explosion").SetEffectPower(30m).SetMpCost(30m).Build();
             defaultSkills.Add(magicClaw);
             defaultSkills.Add(quantumExplosion);
 

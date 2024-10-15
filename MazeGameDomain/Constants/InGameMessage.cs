@@ -89,7 +89,7 @@ namespace MazeGameDomain.Constants
         public static string ReadCurrentStatus(Adventurer adventurer, Monster monster)
         {
             return $"Player - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {(Class)adventurer.Class}" +
-                $"\nMonster - HP: {monster.Health}, HP: {monster.MP}";
+                $"\nMonster {monster.Name} - HP: {monster.Health}, MP: {monster.MP}, Type: {monster.Type}";
         }
         public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
         {
