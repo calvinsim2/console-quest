@@ -83,7 +83,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                         Console.ReadKey(intercept: true);
 
                         Random random = new Random();
-                        int randomInt = random.Next(0, n);
+                        int randomInt = random.Next(0, n + 1);
 
                         if (randomInt < i)
                         {

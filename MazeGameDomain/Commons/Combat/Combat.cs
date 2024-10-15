@@ -157,12 +157,12 @@ namespace MazeGameDomain.Commons.Combat
             {
                 case AttributeType.Health:
                     adventurer.IncreaseHealth(adventurerSkill.EffectPower);
-                    Console.WriteLine(InGameMessage.AdventurerUtilityInformation(adventurerSkill.SkillName, nameof(attributetype), adventurerSkill.EffectPower));
+                    Console.WriteLine(InGameMessage.AdventurerUtilityInformation(adventurerSkill.SkillName, attributetype.ToString(), adventurerSkill.EffectPower));
                     break;
 
                 case AttributeType.MP:
                     adventurer.IncreaseMP(adventurerSkill.EffectPower);
-                    Console.WriteLine(InGameMessage.AdventurerUtilityInformation(adventurerSkill.SkillName, nameof(attributetype), adventurerSkill.EffectPower));
+                    Console.WriteLine(InGameMessage.AdventurerUtilityInformation(adventurerSkill.SkillName, attributetype.ToString(), adventurerSkill.EffectPower));
                     break;
 
                 default: break;
@@ -176,7 +176,7 @@ namespace MazeGameDomain.Commons.Combat
             List<MonsterSkill> availableMonsterSkills = monster.MonsterSkills.Where(x => monster.MP >= x.MpCost).ToList(); 
 
             Random random = new Random();
-            int randomChoice = random.Next(0, availableMonsterSkills.Count - 1);
+            int randomChoice = random.Next(0, availableMonsterSkills.Count);
 
             return availableMonsterSkills[randomChoice];
         }
