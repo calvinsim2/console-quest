@@ -3,7 +3,7 @@
     public enum AttributeType
     {
         None = 0,
-        Health,
+        HP,
         MP,
     }
 }

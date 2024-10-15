@@ -39,12 +39,33 @@ namespace MazeGameDomain.Constants
 
         public static readonly string MagicianSpecialisationDescription = "Prior to leaving the town, an elder stops you for a quick chat" + 
             "\nAs a magician, you are eligible to specialise in either Fire or Ice magic, he has the capability to grant you such powers immediately";
+
+        /// <summary>
+        /// Item Name
+        /// </summary>
+        public static readonly string HpPotion = "Health Potion";
+        public static readonly string MpPotion = "Mana Potion";
+        public static readonly string HpElixir = "Health Elixir";
+        public static readonly string MpElixir = "Mana Elixir";
+
+        /// <summary>
+        /// Item Description
+        /// </summary>
+        public static readonly string HpPotionDescription = "Basic Health Potion, restores 50 HP on use.";
+        public static readonly string MpPotionDescription = "Basic Mana Potion, restores 50 MP on use.";
+        public static readonly string HpElixirDescription = "Premium Health Elixir, restores 100 HP on use.";
+        public static readonly string MpElixirDescription = "Basic Mana Potion, restores 100 MP on use.";
+
+
         public static readonly string PromptCombatDecision = "Choose an action:" + "\n1 - Combat" + "\n2 - Items" + "\n8 - Read Current Status";
         public static readonly string InvalidCombatDecisionSelection = "Invalid decision selected, please input the correct decision.";
         public static readonly string PromptSkill = "Select a skill:";
         public static readonly string InvalidSkillOptionSelection = "Invalid skill option selected, please input the correct selection.";
         public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
+        public static readonly string PromptItem = "Choose an item:";
         public static readonly string BackMessage = "9 - Back";
+        public static readonly string InventoryEmpty = "< Your inventory is empty. >";
+        public static readonly string InvalidItemOptionSelected = "Invalid item option selected, please input the correct selection.";
 
 
         public static readonly string Town = "Welcome Adventurer, it seems like trouble are surfacing again in the dungeons, townsfolk are lamenting" + 
@@ -99,6 +120,15 @@ namespace MazeGameDomain.Constants
             return $"{index} - {skillName}, MP: {mpCost} (Not Enough Mana), Damage: {damage}";
         }
 
+        public static string DisplayAdventurerCurrentItems(int itemIndex, string itemName, string itemDescription, int quantity)
+        {
+            return $"{itemIndex} - {itemName}: {itemDescription}\t Quantity: {quantity}";
+        }
+
+        public static string ItemEffectInformation(string itemName, string attributeType, decimal effectPower)
+        {
+            return $"You consumed a {itemName}, your {attributeType} is increased by {effectPower}.";
+        }
         public static string MonsterAttackingInformation(string monsterName, string skillName, decimal monsterDamage)
         {
             return $"{monsterName} uses {skillName}!" + $"\n dealing {monsterDamage} Damage!";
@@ -107,6 +137,11 @@ namespace MazeGameDomain.Constants
         public static string AdventurerCurrentHealth(decimal currentHealth)
         {
             return $"Your current Health: {currentHealth}";
+        }
+
+        public static string AdventurerCurrentMP(decimal currentMP)
+        {
+            return $"Your current MP: {currentMP}";
         }
 
         public static string AdventurerAttackingInformation(string skillName, decimal skillDamage)
@@ -119,9 +154,9 @@ namespace MazeGameDomain.Constants
             return $"{monsterName} current Health: {currentHealth}";
         }
 
-        public static string AdventurerUtilityInformation(string skillName, string attributeType, decimal skillDamage)
+        public static string AdventurerUtilityInformation(string skillName, string attributeType, decimal effectPower)
         {
-            return $"You used {skillName}!" + $"\nyour {attributeType} is increased by {skillDamage}.";
+            return $"You used {skillName}!" + $"\nyour {attributeType} is increased by {effectPower}.";
         }
 
         public static string PromptForkRoadOptions(string option1, string option2)
