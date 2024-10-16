@@ -5,6 +5,9 @@ namespace MazeGameDomain.Constants
 {
     public static class InGameMessage
     {
+        public static readonly string GameName = "ConsoleQuest";
+        public static readonly string GameOver = "GameOver";
+
         public static readonly string PressAnyKeyToContinue = "Press any key to continue...";
         public static readonly string BlankRow = string.Empty;
         public static readonly string PromptName = "Insert your Name:";
@@ -79,13 +82,28 @@ namespace MazeGameDomain.Constants
         public static readonly string IceResistant = "You are blessed with resistance to ice, proceeding to next dungeon....";
         public static readonly string NotIceResistant = "Unable to escape the cold, frozen cavern, you are forced to venture deeper into the cavern...";
         public static readonly string DefeatIceSlime = "The ice slime melts, you venture on further....";
-        public static readonly string DefeatIceBoar = "The boar make multiple squeaking sounds and eventually falls, time to move on!";
+        public static readonly string DefeatIceBoar = "The boar make multiple squeaking sounds and eventually falls, oddly, it starts melting...";
         public static readonly string DefeatIceYeti = "Yeti releases a huge howl, and falls to its knees!";
+
+        /// <summary>
+        /// Message used for Fire Cavern Map
+        /// </summary>
+        public static readonly string FireCavern = "Entering: Fire Cavern........";
+        public static readonly string FireResistant = "You are blessed with resistance to fire, proceeding to next dungeon....";
+        public static readonly string NotFireResistant = "Unable to resist the hot climate in this place, you are forced to venture deeper into the cavern...";
+        public static readonly string DefeatFireSlime = "The fire slime turns into ashes, you venture on further....";
+        public static readonly string DefeatFireBoar = "The boar falls, with flames on its back extinguished...";
+        public static readonly string DefeatInfernal = "The flames that seem to power the infernal extinguishes, and it starts to crumble!";
+        public static readonly string DefeatFireDragon = "The gargantuan dragon falls flat on its belly, and remain motionless...";
+        public static readonly string DefeatLavaMorphling = "The Lava Morphling loses its shape, and plunged back into the Lava Lake!";
+        public static readonly string DefeatMagma = "The Magma dissolves into the lake, and the lake returned to its calm state!";
 
         /// <summary>
         /// Message used for Death Flow
         /// </summary>
-        public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You Died.";
+        public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You died... " + 
+                                              "without any brave Adventurer protecting the Town, monsters soon overrun and destroyed the Town." + 
+                                              "Better Luck Next Time!";
         /// <summary>
         /// Message used for Victory Flow
         /// </summary>
@@ -108,8 +126,8 @@ namespace MazeGameDomain.Constants
         }
         public static string ReadCurrentStatus(Adventurer adventurer, Monster monster)
         {
-            return $"Player - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {(Class)adventurer.Class}" +
-                $"\nMonster {monster.Name} - HP: {monster.Health}, MP: {monster.MP}, Type: {monster.Type}";
+            return $"Player: {adventurer.Name} - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {((Class)adventurer.Class).ToString()}" +
+                $"\nMonster: {monster.Name} - HP: {monster.Health}, MP: {monster.MP}, Type: {((ElementType)monster.Type).ToString()}";
         }
         public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
         {

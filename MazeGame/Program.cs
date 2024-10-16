@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IMazeGameApplicationService, MazeGameApplicationService>();
 builder.Services.AddScoped<IMazeGameService, MazeGameService>();
 builder.Services.AddScoped<IIceCavern, IceCavern>();
+builder.Services.AddScoped<IFireCavern, FireCavern>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

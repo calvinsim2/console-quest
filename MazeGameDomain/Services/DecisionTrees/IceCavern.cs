@@ -23,7 +23,7 @@ namespace MazeGameDomain.Services.DecisionTrees
         public MazeGameDecisionQuery IsAdventurerIceResistant { get; set; }
 
 
-        public MazeGameDecisionQuery TransverseIceCavernAsync(MazeGameDataModel mazeGameDataModel)
+        public MazeGameDecisionQuery TransverseIceCavern(MazeGameDataModel mazeGameDataModel)
         {
             Adventurer adventurerDetail = mazeGameDataModel.Adventurer;
             IceCavernMonsterCreator iceCavernMonsterCreator = new IceCavernMonsterCreator();
@@ -38,7 +38,7 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 },
 
-                Positive = new MazeGameDecisionResult { Result = MazeGameFlow.Victory },
+                Positive = new MazeGameDecisionResult { Result = MazeGameFlow.FireCavern },
             };
 
             IceYetiEncounter = new MazeGameDecisionQuery()
