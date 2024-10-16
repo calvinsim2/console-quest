@@ -7,18 +7,18 @@ namespace MazeGameDomain.Commons.Combat
 {
     public static class Combat
     {
-        public static bool CommenceCombat(Adventurer adventurer, Monster monster)
+        public static bool CommenceCombat(Adventurer adventurer, Monster monster, int mapType)
         {
             bool adventurerVictorious = false;
 
             while (adventurer.Health > 0 && monster.Health > 0)
             {
                 // if playerSkill is null, means item choice was selected, player do not attack for that turn.
-                AdventurerSkill? adventurerSkill = PlayerInput(adventurer, monster);
+                AdventurerSkill? adventurerSkill = PlayerInput(adventurer, monster, mapType);
 
                 MonsterSkill monsterSkill = MonsterDecision(monster);
 
-                EntitiesInteraction(adventurerSkill, monsterSkill, adventurer, monster);
+                EntitiesInteraction(adventurerSkill, monsterSkill, adventurer, monster, mapType);
                 // player's health has higher priority, if player health reaches 0 first, considered player lose.
 
                 if (adventurer.Health <= 0)
@@ -38,7 +38,7 @@ namespace MazeGameDomain.Commons.Combat
         }
 
         public static void EntitiesInteraction(AdventurerSkill? adventurerSkill, MonsterSkill monsterSkill, 
-                                               Adventurer adventurer, Monster monster)
+                                               Adventurer adventurer, Monster monster, int mapType)
         {
             if (adventurerSkill is null)
             {
@@ -48,7 +48,7 @@ namespace MazeGameDomain.Commons.Combat
                 }
                 else
                 {
-                    MonsterAttacks(monsterSkill, adventurer, monster);
+                    MonsterAttacks(monsterSkill, adventurer, monster, mapType);
                 }
                 
                 return;
@@ -61,26 +61,26 @@ namespace MazeGameDomain.Commons.Combat
 
                 if (randomNumber > 3)
                 {
-                    PlayerAttacks(adventurerSkill, adventurer, monster);
+                    PlayerAttacks(adventurerSkill, adventurer, monster, mapType);
 
                     if (monster.Health <= 0)
                     {
                         return;
                     }
 
-                    MonsterAttacks(monsterSkill, adventurer, monster);
+                    MonsterAttacks(monsterSkill, adventurer, monster, mapType);
 
                 }
                 else
                 {
-                    MonsterAttacks(monsterSkill, adventurer, monster);
+                    MonsterAttacks(monsterSkill, adventurer, monster, mapType);
 
                     if (adventurer.Health <= 0)
                     {
                         return;
                     }
 
-                    PlayerAttacks(adventurerSkill, adventurer, monster);
+                    PlayerAttacks(adventurerSkill, adventurer, monster, mapType);
 
                 }
 
@@ -90,23 +90,23 @@ namespace MazeGameDomain.Commons.Combat
             if (!adventurerSkill.IsUtility)
             {
                 MonsterUtility(monsterSkill, monster);
-                PlayerAttacks(adventurerSkill, adventurer, monster);
+                PlayerAttacks(adventurerSkill, adventurer, monster, mapType);
             }
             else
             {
                 PlayerUtility(adventurerSkill, adventurer);
-                MonsterAttacks(monsterSkill, adventurer, monster);
+                MonsterAttacks(monsterSkill, adventurer, monster, mapType);
             }
             
         }
 
         #region Monster and Player attacks / utility function
 
-        public static void MonsterAttacks(MonsterSkill monsterSkill, Adventurer adventurer, Monster monster)
+        public static void MonsterAttacks(MonsterSkill monsterSkill, Adventurer adventurer, Monster monster, int mapType)
         {
-            decimal monsterDamage = monsterSkill.EffectPower;
             decimal manaCost = monsterSkill.MpCost;
 
+            decimal monsterDamage = MapEffects.ComputeActualDamageBasedOnMapEffects(monsterSkill.EffectPower, mapType, monsterSkill.AttackType);
             Console.WriteLine(InGameMessage.MonsterAttackingInformation(monster.Name, monsterSkill.SkillName, monsterDamage));
             adventurer.DecreaseHealth(monsterDamage);
             Console.WriteLine(InGameMessage.AdventurerCurrentHealth(adventurer.Health));
@@ -114,11 +114,11 @@ namespace MazeGameDomain.Commons.Combat
             monster.DecreaseMP(manaCost);
         }
 
-        public static void PlayerAttacks(AdventurerSkill adventurerSkill, Adventurer adventurer, Monster monster)
+        public static void PlayerAttacks(AdventurerSkill adventurerSkill, Adventurer adventurer, Monster monster, int mapType)
         {
-            decimal adventurerDamage = adventurerSkill.EffectPower;
             decimal manaCost = adventurerSkill.MpCost;
 
+            decimal adventurerDamage = MapEffects.ComputeActualDamageBasedOnMapEffects(adventurerSkill.EffectPower, mapType, adventurerSkill.AttackType);
             Console.WriteLine(InGameMessage.AdventurerAttackingInformation(adventurerSkill.SkillName, adventurerDamage));
             monster.DecreaseHealth(adventurerDamage);
             Console.WriteLine(InGameMessage.MonsterCurrentHealth(monster.Health, monster.Name));
@@ -182,7 +182,7 @@ namespace MazeGameDomain.Commons.Combat
         #endregion
 
         #region Player Input Subroutine
-        public static AdventurerSkill? PlayerInput(Adventurer adventurer, Monster monster)
+        public static AdventurerSkill? PlayerInput(Adventurer adventurer, Monster monster, int mapType)
         {
             AdventurerCombatDecision adventurerCombatDecision = new AdventurerCombatDecision();
 
@@ -202,7 +202,7 @@ namespace MazeGameDomain.Commons.Combat
 
                 if (userInputInt == CombatDecision.ReadStatus)
                 {
-                    ReadCurrentStatus(adventurer, monster);
+                    ReadCurrentStatus(adventurer, monster, mapType);
                     continue;
                 }
 
@@ -221,10 +221,10 @@ namespace MazeGameDomain.Commons.Combat
         }
 
         #region Player Combat Input Related
-        public static void ReadCurrentStatus(Adventurer adventurer, Monster monster) 
+        public static void ReadCurrentStatus(Adventurer adventurer, Monster monster, int mapType) 
         {
             Console.WriteLine(InGameMessage.BlankRow);
-            Console.WriteLine(InGameMessage.ReadCurrentStatus(adventurer, monster));
+            Console.WriteLine(InGameMessage.ReadCurrentStatus(adventurer, monster, mapType));
             Console.WriteLine(InGameMessage.BlankRow);
         }
         public static void PlayerCombatInput(Adventurer adventurer, AdventurerCombatDecision adventurerCombatDecision)
@@ -274,11 +274,11 @@ namespace MazeGameDomain.Commons.Combat
             {
                 if (adventurerMP >= adventurerSkills[i].MpCost)
                 {
-                    Console.WriteLine(InGameMessage.AdventurerSkillMessage(i, adventurerSkills[i].SkillName, adventurerSkills[i].MpCost, adventurerSkills[i].EffectPower));
+                    Console.WriteLine(InGameMessage.AdventurerSkillMessage(i, adventurerSkills[i].SkillName, adventurerSkills[i].MpCost, adventurerSkills[i].EffectPower, adventurerSkills[i].AttackType));
                 }
                 else
                 {
-                    Console.WriteLine(InGameMessage.AdventurerInsufficientMPSkillMessage(i, adventurerSkills[i].SkillName, adventurerSkills[i].MpCost, adventurerSkills[i].EffectPower));
+                    Console.WriteLine(InGameMessage.AdventurerInsufficientMPSkillMessage(i, adventurerSkills[i].SkillName, adventurerSkills[i].MpCost, adventurerSkills[i].EffectPower, adventurerSkills[i].AttackType));
                 }
             }
 

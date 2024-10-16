@@ -5,6 +5,7 @@
         public string SkillName { get; set; } = string.Empty;
         public decimal EffectPower { get; set; }
         public decimal MpCost { get; set; }
+        public int AttackType { get; set; }
         public bool IsUtility { get; set; }
         public int AttributeTarget { get; set; }
     }

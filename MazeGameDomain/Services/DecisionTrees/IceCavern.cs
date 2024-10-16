@@ -10,7 +10,7 @@ namespace MazeGameDomain.Services.DecisionTrees
 {
     public class IceCavern : IIceCavern
     {
-        public IceCavern() { }
+        private int MapClassification { get; set; } = (int)MapType.Balanced;
 
         public MazeGameDecisionQuery IceCaveExit { get; set; }
         public MazeGameDecisionQuery IceYetiEncounter { get; set; }
@@ -21,6 +21,8 @@ namespace MazeGameDomain.Services.DecisionTrees
         public MazeGameDecisionQuery IceBoarEncounter { get; set; }
         public MazeGameDecisionQuery IceSlimeEncounter { get; set; }
         public MazeGameDecisionQuery IsAdventurerIceResistant { get; set; }
+
+        public IceCavern() { }
 
 
         public MazeGameDecisionQuery TransverseIceCavern(MazeGameDataModel mazeGameDataModel)
@@ -49,7 +51,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 {
                     IceCavernMonster iceYeti = iceCavernMonsterCreator.CreateMonster(IceCavernMonsters.GenerateIceYeti());
 
-                    bool isVictorious = Combat.CommenceCombat(adventurerDetail, iceYeti);
+                    bool isVictorious = Combat.CommenceCombat(adventurerDetail, iceYeti, MapClassification);
 
                     if (isVictorious)
                     {
@@ -163,7 +165,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 {
                     IceCavernMonster iceBoar = iceCavernMonsterCreator.CreateMonster(IceCavernMonsters.GenerateIceBoar());
 
-                    bool isVictorious = Combat.CommenceCombat(adventurerDetail, iceBoar);
+                    bool isVictorious = Combat.CommenceCombat(adventurerDetail, iceBoar, MapClassification);
 
                     if (isVictorious)
                     {
@@ -186,10 +188,10 @@ namespace MazeGameDomain.Services.DecisionTrees
                 Title = "Ice Slime appeared, prepare for battle... ",
 
                 ProcessPhase = () =>
-                {
+                { 
                     IceCavernMonster iceSlime = iceCavernMonsterCreator.CreateMonster(IceCavernMonsters.GenerateIceSlime());
 
-                    bool isVictorious = Combat.CommenceCombat(adventurerDetail, iceSlime);
+                    bool isVictorious = Combat.CommenceCombat(adventurerDetail, iceSlime, MapClassification);
 
                     if (isVictorious)
                     {

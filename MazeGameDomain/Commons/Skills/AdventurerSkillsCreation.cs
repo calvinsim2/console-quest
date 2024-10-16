@@ -1,13 +1,14 @@
 ﻿using MazeGameDomain.Builders;
+using MazeGameDomain.Enums;
 using MazeGameDomain.Models;
 
 namespace MazeGameDomain.Commons.Skills
 {
     public static class AdventurerSkillsCreation
     {
-        public static AdventurerSkill AdventurerCustomOffensiveSkill(string skillName, decimal effectPower, decimal mpCost)
+        public static AdventurerSkill AdventurerCustomOffensiveSkill(string skillName, decimal effectPower, int attackType, decimal mpCost)
         {
-            return new AdventurerSkillBuilder().SetName(skillName).SetEffectPower(effectPower).SetMpCost(mpCost).Build();
+            return new AdventurerSkillBuilder().SetName(skillName).SetEffectPower(effectPower).SetAttackType(attackType).SetMpCost(mpCost).Build();
         }
 
         public static AdventurerSkill AdventurerCustomUtilitySkill(string skillName, decimal effectPower, decimal mpCost, int attributeTarget)
@@ -19,12 +20,12 @@ namespace MazeGameDomain.Commons.Skills
         {
             List<AdventurerSkill> defaultSkills = new List<AdventurerSkill>();
 
-            AdventurerSkill swordSlash = new AdventurerSkillBuilder().SetName("Sword Slash").SetEffectPower(10m).SetMpCost(0m).Build();
-            AdventurerSkill advancedBrandish = new AdventurerSkillBuilder().SetName("Advanced Brandish").SetEffectPower(20m).SetMpCost(5m).Build();
-            AdventurerSkill powerRestore = new AdventurerSkillBuilder().SetName("Power Restore").SetEffectPower(30m).SetMpCost(0m).SetIsUtility(true).SetAttributeTarget(2).Build();
-            defaultSkills.Add(swordSlash);
+            AdventurerSkill powerStrike = new AdventurerSkillBuilder().SetName("Power Strike").SetEffectPower(20m).SetAttackType((int)AttackType.Melee).SetMpCost(0m).Build();
+            AdventurerSkill advancedBrandish = new AdventurerSkillBuilder().SetName("Advanced Brandish").SetEffectPower(30m).SetAttackType((int)AttackType.Melee).SetMpCost(5m).Build();
+            AdventurerSkill mpRestore = new AdventurerSkillBuilder().SetName("MP Restore").SetEffectPower(30m).SetMpCost(0m).SetIsUtility(true).SetAttributeTarget(2).Build();
+            defaultSkills.Add(powerStrike);
             defaultSkills.Add(advancedBrandish);
-            defaultSkills.Add(powerRestore);
+            defaultSkills.Add(mpRestore);
 
             return defaultSkills;
         }
@@ -33,8 +34,8 @@ namespace MazeGameDomain.Commons.Skills
         {
             List<AdventurerSkill> defaultSkills = new List<AdventurerSkill>();
 
-            AdventurerSkill magicClaw = new AdventurerSkillBuilder().SetName("Magic Claw").SetEffectPower(15m).SetMpCost(0m).Build();
-            AdventurerSkill quantumExplosion = new AdventurerSkillBuilder().SetName("Quantum Explosion").SetEffectPower(30m).SetMpCost(30m).Build();
+            AdventurerSkill magicClaw = new AdventurerSkillBuilder().SetName("Magic Claw").SetEffectPower(20m).SetAttackType((int)AttackType.Magic).SetMpCost(0m).Build();
+            AdventurerSkill quantumExplosion = new AdventurerSkillBuilder().SetName("Quantum Explosion").SetEffectPower(30m).SetAttackType((int)AttackType.Magic).SetMpCost(30m).Build();
             defaultSkills.Add(magicClaw);
             defaultSkills.Add(quantumExplosion);
 
@@ -45,9 +46,11 @@ namespace MazeGameDomain.Commons.Skills
         {
             List<AdventurerSkill> defaultSkills = new List<AdventurerSkill>();
 
-            AdventurerSkill doubleShot = new AdventurerSkillBuilder().SetName("Double Shot").SetEffectPower(15m).SetMpCost(0m).Build();
-            AdventurerSkill chargedShot = new AdventurerSkillBuilder().SetName("Charged Shot").SetEffectPower(25m).SetMpCost(10m).Build();
-            defaultSkills.Add(doubleShot);
+            AdventurerSkill bowSmash = new AdventurerSkillBuilder().SetName("Bow Smash").SetEffectPower(10m).SetAttackType((int)AttackType.Melee).SetMpCost(0m).Build();
+            AdventurerSkill quickShot = new AdventurerSkillBuilder().SetName("Quick Shot").SetEffectPower(20m).SetAttackType((int)AttackType.Ranged).SetMpCost(0m).Build();
+            AdventurerSkill chargedShot = new AdventurerSkillBuilder().SetName("Charged Shot").SetEffectPower(30m).SetAttackType((int)AttackType.Ranged).SetMpCost(10m).Build();
+            defaultSkills.Add(bowSmash);
+            defaultSkills.Add(quickShot);
             defaultSkills.Add(chargedShot);
 
             return defaultSkills;
