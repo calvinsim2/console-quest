@@ -225,7 +225,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                     return false;
                 },
 
-                Positive = new MazeGameDecisionResult { Result = MazeGameFlow.Victory },
+                Positive = new MazeGameDecisionResult { Result = MazeGameFlow.FireCavern },
                 Negative = IceSlimeEncounter
             };
 
