@@ -60,14 +60,14 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 },
 
-                Positive = MagmaEncounter,
+                Positive = FireCaveExit,
                 Negative = new MazeGameDecisionResult() { Result = MazeGameFlow.Death }
             };
 
             LavaLakeTrap = new MazeGameDecisionQuery()
             {
-                Title = "Defeating the morphling seems to have activated something... peculiar, the lava lake starts making rumbling sound " + 
-                        "you attempt to run deeper into the path to avoid the lake trap.",
+                Title = "Defeating the morphling seems to have activated something... peculiar, the lava lake starts making rumbling sound! " + 
+                        "You attempt to run deeper into the path to avoid the lake trap, will you successfully avoid the trap?",
 
                 ProcessPhase = () =>
                 {
@@ -135,7 +135,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                     return false;
                 },
 
-                Positive = FireStatue,
+                Positive = FireCaveExit,
                 Negative = new MazeGameDecisionResult() { Result = MazeGameFlow.Death }
             };
 

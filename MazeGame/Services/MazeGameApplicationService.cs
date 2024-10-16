@@ -19,10 +19,11 @@ namespace MazeGameApplication.Services
 
         public void InvokeGame()
         {
-            Console.WriteLine(FiggleFonts.Standard.Render("ConsoleQuest"));
+            Console.WriteLine(FiggleFonts.Standard.Render(InGameMessage.GameName));
             InGameMessage.Introduction();
             MazeGameDataModel mazeGameDataModel = GetGameRequiredDetails();
             _mazeGameService.StartGame(mazeGameDataModel);
+            Console.WriteLine(FiggleFonts.Standard.Render(InGameMessage.GameOver));
         } 
 
         private MazeGameDataModel GetGameRequiredDetails()
@@ -74,7 +75,12 @@ namespace MazeGameApplication.Services
             Console.WriteLine(InGameMessage.PromptClassSelection);
 
             bool validClassSelection = false;
-            List<string> validClasses = new List<string> { "1", "2", "3" };
+            List<string> validClasses = new List<string> 
+            {
+                ((int)Class.Warrior).ToString(),
+                ((int)Class.Magician).ToString(),
+                ((int)Class.Archer).ToString()
+            };
             int classSelection = 0;
 
             while (!validClassSelection)

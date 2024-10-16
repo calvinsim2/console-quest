@@ -5,6 +5,9 @@ namespace MazeGameDomain.Constants
 {
     public static class InGameMessage
     {
+        public static readonly string GameName = "ConsoleQuest";
+        public static readonly string GameOver = "GameOver";
+
         public static readonly string PressAnyKeyToContinue = "Press any key to continue...";
         public static readonly string BlankRow = string.Empty;
         public static readonly string PromptName = "Insert your Name:";
@@ -98,7 +101,9 @@ namespace MazeGameDomain.Constants
         /// <summary>
         /// Message used for Death Flow
         /// </summary>
-        public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You Died.";
+        public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You died... " + 
+                                              "without any brave Adventurer protecting the Town, monsters soon overrun and destroyed the Town." + 
+                                              "Better Luck Next Time!";
         /// <summary>
         /// Message used for Victory Flow
         /// </summary>
@@ -121,8 +126,8 @@ namespace MazeGameDomain.Constants
         }
         public static string ReadCurrentStatus(Adventurer adventurer, Monster monster)
         {
-            return $"Player - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {(Class)adventurer.Class}" +
-                $"\nMonster {monster.Name} - HP: {monster.Health}, MP: {monster.MP}, Type: {monster.Type}";
+            return $"Player: {adventurer.Name} - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {((Class)adventurer.Class).ToString()}" +
+                $"\nMonster: {monster.Name} - HP: {monster.Health}, MP: {monster.MP}, Type: {((ElementType)monster.Type).ToString()}";
         }
         public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
         {
