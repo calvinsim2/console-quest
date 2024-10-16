@@ -10,7 +10,7 @@ namespace MazeGameDomain.Domain.Services.DecisionTrees.Tests
 
         private void CallTransverseIceCavernAsync()
         {
-            _ = IceCavernMock.TransverseIceCavernAsync(MazeGameDataModelMock);
+            _ = IceCavernMock.TransverseIceCavern(MazeGameDataModelMock);
         }
 
         private static readonly Adventurer AdventurerMock = new Adventurer

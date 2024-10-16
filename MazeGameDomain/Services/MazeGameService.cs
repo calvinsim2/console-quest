@@ -11,9 +11,11 @@ namespace MazeGameDomain.Services
     public class MazeGameService : IMazeGameService
     {
         private readonly IIceCavern _iceCavern;
-        public MazeGameService(IIceCavern iceCavern) 
+        private readonly IFireCavern _fireCavern;
+        public MazeGameService(IIceCavern iceCavern, IFireCavern fireCavern) 
         {
             _iceCavern = iceCavern;
+            _fireCavern = fireCavern; 
         }
 
         public void StartGame(MazeGameDataModel mazeGameDataModel)
@@ -38,6 +40,7 @@ namespace MazeGameDomain.Services
                         break;
 
                     case MazeGameFlow.FireCavern:
+                        currentStep = ExecuteFireCavernFlow(mazeGameDataModel);
                         break;
 
                     case MazeGameFlow.Death:
@@ -74,8 +77,19 @@ namespace MazeGameDomain.Services
             Console.WriteLine(InGameMessage.BlankRow);
             Console.WriteLine(InGameMessage.IceCavern);
             Console.WriteLine(InGameMessage.BlankRow);
-            MazeGameDecisionQuery iceCavernCreate = _iceCavern.TransverseIceCavernAsync(mazeGameDataModel);
+            MazeGameDecisionQuery iceCavernCreate = _iceCavern.TransverseIceCavern(mazeGameDataModel);
             MazeGameFlow currentStep = iceCavernCreate.EvaluateAsync();
+
+            return currentStep;
+        }
+
+        private MazeGameFlow ExecuteFireCavernFlow(MazeGameDataModel mazeGameDataModel)
+        {
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.FireCavern);
+            Console.WriteLine(InGameMessage.BlankRow);
+            MazeGameDecisionQuery fireCavernCreate = _fireCavern.TransverseFireCavern(mazeGameDataModel);
+            MazeGameFlow currentStep = fireCavernCreate.EvaluateAsync();
 
             return currentStep;
         }

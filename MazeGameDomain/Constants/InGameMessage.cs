@@ -79,8 +79,21 @@ namespace MazeGameDomain.Constants
         public static readonly string IceResistant = "You are blessed with resistance to ice, proceeding to next dungeon....";
         public static readonly string NotIceResistant = "Unable to escape the cold, frozen cavern, you are forced to venture deeper into the cavern...";
         public static readonly string DefeatIceSlime = "The ice slime melts, you venture on further....";
-        public static readonly string DefeatIceBoar = "The boar make multiple squeaking sounds and eventually falls, time to move on!";
+        public static readonly string DefeatIceBoar = "The boar make multiple squeaking sounds and eventually falls, oddly, it starts melting...";
         public static readonly string DefeatIceYeti = "Yeti releases a huge howl, and falls to its knees!";
+
+        /// <summary>
+        /// Message used for Fire Cavern Map
+        /// </summary>
+        public static readonly string FireCavern = "Entering: Fire Cavern........";
+        public static readonly string FireResistant = "You are blessed with resistance to fire, proceeding to next dungeon....";
+        public static readonly string NotFireResistant = "Unable to resist the hot climate in this place, you are forced to venture deeper into the cavern...";
+        public static readonly string DefeatFireSlime = "The fire slime turns into ashes, you venture on further....";
+        public static readonly string DefeatFireBoar = "The boar falls, with flames on its back extinguished...";
+        public static readonly string DefeatInfernal = "The flames that seem to power the infernal extinguishes, and it starts to crumble!";
+        public static readonly string DefeatFireDragon = "The gargantuan dragon falls flat on its belly, and remain motionless...";
+        public static readonly string DefeatLavaMorphling = "The Lava Morphling loses its shape, and plunged back into the Lava Lake!";
+        public static readonly string DefeatMagma = "The Magma dissolves into the lake, and the lake returned to its calm state!";
 
         /// <summary>
         /// Message used for Death Flow

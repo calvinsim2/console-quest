@@ -3,8 +3,8 @@ using MazeGameDomain.Services.DecisionTrees;
 
 namespace MazeGameDomain.Interfaces.DecisionTrees
 {
-    public interface IIceCavern
+    public interface IFireCavern
     {
-        MazeGameDecisionQuery TransverseIceCavern(MazeGameDataModel mazeGameDataModel);
+        MazeGameDecisionQuery TransverseFireCavern(MazeGameDataModel mazeGameDataModel);
     }
 }
