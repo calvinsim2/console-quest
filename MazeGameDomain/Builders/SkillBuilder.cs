@@ -24,6 +24,12 @@ namespace MazeGameDomain.Builders
             return this;
         }
 
+        public SkillBuilder<T> SetAttackType(int setAttackType)
+        {
+            skill.AttackType = setAttackType;
+            return this;
+        }
+
         public SkillBuilder<T> SetIsUtility(bool isUtility)
         {
             skill.IsUtility = isUtility;

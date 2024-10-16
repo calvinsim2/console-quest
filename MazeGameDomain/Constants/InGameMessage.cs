@@ -67,7 +67,7 @@ namespace MazeGameDomain.Constants
         public static readonly string InsufficentManaSelection = "Insufficient mana, consume a potion or choose another attack.";
         public static readonly string PromptItem = "Choose an item:";
         public static readonly string BackMessage = "9 - Back";
-        public static readonly string InventoryEmpty = "< Your inventory is empty. >";
+        public static readonly string InventoryEmpty = "--- Your inventory is empty. ---";
         public static readonly string InvalidItemOptionSelected = "Invalid item option selected, please input the correct selection.";
 
 
@@ -124,18 +124,22 @@ namespace MazeGameDomain.Constants
         {
             return $"You have chosen to be a/an {(Specialisation)specialisation}";
         }
-        public static string ReadCurrentStatus(Adventurer adventurer, Monster monster)
+        public static string ReadCurrentStatus(Adventurer adventurer, Monster monster, int mapType)
         {
             return $"Player: {adventurer.Name} - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {((Class)adventurer.Class).ToString()}" +
-                $"\nMonster: {monster.Name} - HP: {monster.Health}, MP: {monster.MP}, Type: {((ElementType)monster.Type).ToString()}";
+                $"\nMonster: {monster.Name} - HP: {monster.Health}, MP: {monster.MP}, Type: {((ElementType)monster.Type).ToString()}" + 
+                $"\nCurrent Map Type: {((MapType)mapType).ToString()}" + 
+                "\n" +
+                "\nTight Maps - Ranged attacks has 25% chance of missing, 75% to deal 1/2 damage." +
+                "\nWide Maps - Melee attacks has 25% chance of missing, 75% to deal 1/2 damage.";
         }
-        public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
+        public static string AdventurerSkillMessage(int index, string skillName, decimal mpCost, decimal damage, int attackType)
         {
-            return $"{index} - {skillName}, MP: {mpCost}, Damage: {damage}";
+            return $"{index} - {skillName}, MP: {mpCost}, Damage: {damage}, Type: {((AttackType)attackType).ToString()}";
         }
-        public static string AdventurerInsufficientMPSkillMessage(int index, string skillName, decimal mpCost, decimal damage)
+        public static string AdventurerInsufficientMPSkillMessage(int index, string skillName, decimal mpCost, decimal damage, int attackType)
         {
-            return $"{index} - {skillName}, MP: {mpCost} (Not Enough Mana), Damage: {damage}";
+            return $"{index} - {skillName}, MP: {mpCost} (Not Enough Mana), Damage: {damage}, Type: {((AttackType)attackType).ToString()}";
         }
 
         public static string DisplayAdventurerCurrentItems(int itemIndex, string itemName, string itemDescription, int quantity)
@@ -160,6 +164,16 @@ namespace MazeGameDomain.Constants
         public static string AdventurerCurrentMP(decimal currentMP)
         {
             return $"Your current MP: {currentMP}";
+        }
+
+        public static string AttackMissDueToMapTypeMismatch()
+        {
+            return "Attack missed due to incompatible attack type!";
+        }
+
+        public static string AttackDamageNerfedDueToMapTypeMismatch()
+        {
+            return "Incompatibile attack type, damage dealt is halved.";
         }
 
         public static string AdventurerAttackingInformation(string skillName, decimal skillDamage)

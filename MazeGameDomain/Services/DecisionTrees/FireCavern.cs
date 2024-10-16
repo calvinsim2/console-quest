@@ -10,6 +10,7 @@ namespace MazeGameDomain.Services.DecisionTrees
 {
     public class FireCavern : IFireCavern
     {
+        private int MapClassification { get; set; } = (int)MapType.Balanced;
         public FireCavern() { }
 
         public MazeGameDecisionQuery FireCaveExit { get; set; }
@@ -49,7 +50,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     FireCavernMonster magma = fireCavernMonsterCreator.CreateMonster(FireCavernMonsters.GenerateMagma());
-                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, magma);
+                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, magma, MapClassification);
                     if (isAdventurerVictorious)
                     {
                         Console.WriteLine(InGameMessage.DefeatMagma);
@@ -103,7 +104,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     FireCavernMonster lavaMorphling = fireCavernMonsterCreator.CreateMonster(FireCavernMonsters.GenerateLavaMorphling());
-                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, lavaMorphling);
+                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, lavaMorphling, MapClassification);
                     if (isAdventurerVictorious)
                     {
                         Console.WriteLine(InGameMessage.DefeatLavaMorphling);
@@ -125,7 +126,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     FireCavernMonster fireDragon = fireCavernMonsterCreator.CreateMonster(FireCavernMonsters.GenerateFireDragon());
-                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, fireDragon);
+                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, fireDragon, MapClassification);
                     if (isAdventurerVictorious)
                     {
                         Console.WriteLine(InGameMessage.DefeatFireDragon);
@@ -165,7 +166,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     FireCavernMonster infernal = fireCavernMonsterCreator.CreateMonster(FireCavernMonsters.GenerateInfernal());
-                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, infernal);
+                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, infernal, MapClassification);
                     if (isAdventurerVictorious)
                     {
                         Console.WriteLine(InGameMessage.DefeatInfernal);
@@ -187,7 +188,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     FireCavernMonster fireBoar = fireCavernMonsterCreator.CreateMonster(FireCavernMonsters.GenerateFireBoar());
-                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, fireBoar);
+                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, fireBoar, MapClassification);
                     if (isAdventurerVictorious)
                     {
                         Console.WriteLine(InGameMessage.DefeatFireBoar);
@@ -222,7 +223,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     FireCavernMonster fireSlime = fireCavernMonsterCreator.CreateMonster(FireCavernMonsters.GenerateFireSlime());
-                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, fireSlime);
+                    bool isAdventurerVictorious = Combat.CommenceCombat(adventurerDetail, fireSlime, MapClassification);
                     if (isAdventurerVictorious)
                     {
                         Console.WriteLine(InGameMessage.DefeatFireSlime);
