@@ -12,17 +12,19 @@ namespace MazeGameDomain.Services
     {
         private readonly IIceCavern _iceCavern;
         private readonly IFireCavern _fireCavern;
-        public MazeGameService(IIceCavern iceCavern, IFireCavern fireCavern) 
+        private readonly IThickForest _thickForest;
+        public MazeGameService(IIceCavern iceCavern, IFireCavern fireCavern, IThickForest thickForest) 
         {
             _iceCavern = iceCavern;
-            _fireCavern = fireCavern; 
+            _fireCavern = fireCavern;
+            _thickForest = thickForest; 
         }
 
         public void StartGame(MazeGameDataModel mazeGameDataModel)
         {
-            MazeGameAsync(mazeGameDataModel);
+            QuestGame(mazeGameDataModel);
         }
-        public MazeGameFlow MazeGameAsync(MazeGameDataModel mazeGameDataModel, 
+        public MazeGameFlow QuestGame(MazeGameDataModel mazeGameDataModel, 
                                                       MazeGameFlow startingStep = MazeGameFlow.Town)
         {
             MazeGameFlow currentStep = startingStep;
@@ -41,6 +43,10 @@ namespace MazeGameDomain.Services
 
                     case MazeGameFlow.FireCavern:
                         currentStep = ExecuteFireCavernFlow(mazeGameDataModel);
+                        break;
+
+                    case MazeGameFlow.ThickForest:
+                        currentStep = ExecuteThickForestFlow(mazeGameDataModel);
                         break;
 
                     case MazeGameFlow.Death:
@@ -90,6 +96,17 @@ namespace MazeGameDomain.Services
             Console.WriteLine(InGameMessage.BlankRow);
             MazeGameDecisionQuery fireCavernCreate = _fireCavern.TransverseFireCavern(mazeGameDataModel);
             MazeGameFlow currentStep = fireCavernCreate.EvaluateAsync();
+
+            return currentStep;
+        }
+
+        private MazeGameFlow ExecuteThickForestFlow(MazeGameDataModel mazeGameDataModel)
+        {
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.ThickForest);
+            Console.WriteLine(InGameMessage.BlankRow);
+            MazeGameDecisionQuery thickForestCreate = _thickForest.TransverseThickForest(mazeGameDataModel);
+            MazeGameFlow currentStep = thickForestCreate.EvaluateAsync();
 
             return currentStep;
         }
