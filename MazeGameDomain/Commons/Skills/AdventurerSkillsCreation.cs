@@ -20,8 +20,8 @@ namespace MazeGameDomain.Commons.Skills
         {
             List<AdventurerSkill> defaultSkills = new List<AdventurerSkill>();
 
-            AdventurerSkill powerStrike = new AdventurerSkillBuilder().SetName("Power Strike").SetEffectPower(20m).SetAttackType((int)AttackType.Melee).SetMpCost(0m).Build();
-            AdventurerSkill advancedBrandish = new AdventurerSkillBuilder().SetName("Advanced Brandish").SetEffectPower(30m).SetAttackType((int)AttackType.Melee).SetMpCost(5m).Build();
+            AdventurerSkill powerStrike = new AdventurerSkillBuilder().SetName("Power Strike").SetEffectPower(10m).SetAttackType((int)AttackType.Melee).SetMpCost(0m).Build();
+            AdventurerSkill advancedBrandish = new AdventurerSkillBuilder().SetName("Advanced Brandish").SetEffectPower(30m).SetAttackType((int)AttackType.Melee).SetMpCost(10m).Build();
             AdventurerSkill mpRestore = new AdventurerSkillBuilder().SetName("MP Restore").SetEffectPower(30m).SetMpCost(0m).SetIsUtility(true).SetAttributeTarget(2).Build();
             defaultSkills.Add(powerStrike);
             defaultSkills.Add(advancedBrandish);
@@ -34,7 +34,7 @@ namespace MazeGameDomain.Commons.Skills
         {
             List<AdventurerSkill> defaultSkills = new List<AdventurerSkill>();
 
-            AdventurerSkill magicClaw = new AdventurerSkillBuilder().SetName("Magic Claw").SetEffectPower(20m).SetAttackType((int)AttackType.Magic).SetMpCost(0m).Build();
+            AdventurerSkill magicClaw = new AdventurerSkillBuilder().SetName("Magic Claw").SetEffectPower(10m).SetAttackType((int)AttackType.Magic).SetMpCost(0m).Build();
             AdventurerSkill quantumExplosion = new AdventurerSkillBuilder().SetName("Quantum Explosion").SetEffectPower(30m).SetAttackType((int)AttackType.Magic).SetMpCost(30m).Build();
             defaultSkills.Add(magicClaw);
             defaultSkills.Add(quantumExplosion);
@@ -54,6 +54,20 @@ namespace MazeGameDomain.Commons.Skills
             defaultSkills.Add(chargedShot);
 
             return defaultSkills;
+        }
+
+        /// <summary>
+        /// Description: Creation of Magician Skills
+        /// </summary>
+
+        public static AdventurerSkill ColdBeam()
+        {
+            return new AdventurerSkillBuilder().SetName("Cold Beam").SetEffectPower(20m).SetAttackType((int)AttackType.Magic).SetMpCost(20m).Build();
+        }
+
+        public static AdventurerSkill FireArrow()
+        {
+            return new AdventurerSkillBuilder().SetName("Fire Arrow").SetEffectPower(20m).SetAttackType((int)AttackType.Magic).SetMpCost(20m).Build();
         }
     }
 }

@@ -140,6 +140,16 @@ namespace MazeGameDomain.Constants
         {
             return $"You have chosen to be a/an {(Specialisation)specialisation}";
         }
+
+        public static string DisplayLearntNewSkillMessage(AdventurerSkill adventurerSkill)
+        {
+            string learntSkillMessage = !adventurerSkill.IsUtility ? 
+                    $"New Skill Acquired - {adventurerSkill.SkillName}, Damage: {adventurerSkill.EffectPower}, MP Cost: {adventurerSkill.MpCost}, AttackType: {((AttackType)adventurerSkill.AttackType).ToString()}" 
+                    : $"New Skill Acquired - {adventurerSkill.SkillName}, MP Cost: {adventurerSkill.MpCost}, Attribute: {adventurerSkill.AttributeTarget}, Amount Restore: {adventurerSkill.EffectPower}";
+
+            return learntSkillMessage;
+
+        }
         public static string ReadCurrentStatus(Adventurer adventurer, Monster monster, int mapType)
         {
             return $"Player: {adventurer.Name} - HP: {adventurer.Health}, MP: {adventurer.MP}, Class: {((Class)adventurer.Class).ToString()}" +

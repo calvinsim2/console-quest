@@ -1,4 +1,5 @@
-﻿using MazeGameDomain.Constants;
+﻿using MazeGameDomain.Commons.Skills;
+using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Models;
 
@@ -25,7 +26,7 @@ namespace MazeGameDomain.Commons
                 Console.WriteLine(InGameMessage.PromptMagicianSpecialisation);
                 string userInput = Console.ReadKey(intercept: true).KeyChar.ToString();
 
-                List<int> validSpecialisationChoice = new List<int> { 1, 2 };
+                List<int> validSpecialisationChoice = new List<int> { (int)Specialisation.IceMage, (int)Specialisation.FireMage };
 
                 bool isValidParsing = int.TryParse(userInput, out int specialisationChoice);
 
@@ -33,6 +34,7 @@ namespace MazeGameDomain.Commons
                 {
                     Console.WriteLine(InGameMessage.DisplayAdventurerSelectedSpecialisation(specialisationChoice));
                     adventurer.Specialisation = specialisationChoice;
+                    AcquireNewMagicianSkill(adventurer, specialisationChoice, AdventurerSkillsCreation.ColdBeam(), AdventurerSkillsCreation.FireArrow());
                     specialisationChosen = true;
                 }
                 else
@@ -41,6 +43,15 @@ namespace MazeGameDomain.Commons
                 }
             }
             
+        }
+
+        public static void AcquireNewMagicianSkill(Adventurer adventurer, int specialisationChoice, 
+                                                   AdventurerSkill iceMageSkill, AdventurerSkill fireMageSkill)
+        {
+            AdventurerSkill learntAdventurerSkill = specialisationChoice == (int)Specialisation.IceMage ? iceMageSkill : fireMageSkill;
+            adventurer.Skills.Add(learntAdventurerSkill);
+
+            Console.WriteLine(InGameMessage.DisplayLearntNewSkillMessage(learntAdventurerSkill));
         }
     }
 }
