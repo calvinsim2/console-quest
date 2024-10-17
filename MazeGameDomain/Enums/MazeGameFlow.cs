@@ -5,6 +5,7 @@
         Town,
         IceCavern,
         FireCavern,
+        ThickForest,
         Death,
         Victory,
         EndGame

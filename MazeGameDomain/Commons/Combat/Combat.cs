@@ -134,12 +134,12 @@ namespace MazeGameDomain.Commons.Combat
             {
                 case AttributeType.HP:
                     monster.IncreaseHealth(monsterSkill.EffectPower);
-                    Console.WriteLine(InGameMessage.AdventurerUtilityInformation(monsterSkill.SkillName, nameof(attributetype), monsterSkill.EffectPower));
+                    Console.WriteLine(InGameMessage.MonsterUtilityInformation(monsterSkill.SkillName, monster.Name, attributetype.ToString(), monsterSkill.EffectPower));
                     break;
 
                 case AttributeType.MP:
                     monster.IncreaseMP(monsterSkill.EffectPower);
-                    Console.WriteLine(InGameMessage.AdventurerUtilityInformation(monsterSkill.SkillName, nameof(attributetype), monsterSkill.EffectPower));
+                    Console.WriteLine(InGameMessage.MonsterUtilityInformation(monsterSkill.SkillName, monster.Name, attributetype.ToString(), monsterSkill.EffectPower));
                     break;
 
                 default: break;

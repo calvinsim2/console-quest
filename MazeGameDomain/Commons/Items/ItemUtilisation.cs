@@ -6,7 +6,7 @@ namespace MazeGameDomain.Commons.Items
 {
     public static class ItemUtilisation
     {
-        
+
         public static void PlayerItemInput(Adventurer adventurer, AdventurerCombatDecision adventurerCombatDecision)
         {
             Console.WriteLine(InGameMessage.PromptItem);
@@ -84,7 +84,7 @@ namespace MazeGameDomain.Commons.Items
             Item selectedItem = ItemDetails.GetItemByItemNumber(selectedItemNo);
             ItemEffect(selectedItemNo, adventurer);
             // deduct or remove item from adventurer inventory.
-            UpdateAdventurerInventory(selectedItemNo, adventurer, -1);
+            UpdateAdventurerInventory(selectedItemNo, adventurer, false, 1);
 
         }
 
@@ -111,17 +111,46 @@ namespace MazeGameDomain.Commons.Items
             }
         }
 
-        public static void UpdateAdventurerInventory(int selectedItemNo, Adventurer adventurer, int amountChange)
+        public static void UpdateAdventurerInventory(int selectedItemNo, Adventurer adventurer, bool isAdd, int amountChange)
         {
             Dictionary<int, int> adventurerInventory = adventurer.Inventory;
 
-            adventurerInventory[selectedItemNo] += amountChange; 
+            if (isAdd)
+            {
+                AddItemQuantityIntoInventory(selectedItemNo, adventurer, amountChange);
+
+            }
+            else
+            {
+                RemoveItemQuantityFromInventory(selectedItemNo, adventurer, amountChange);
+            }
+
+        }
+
+        public static void AddItemQuantityIntoInventory(int selectedItemNo, Adventurer adventurer, int amountChange)
+        {
+            Dictionary<int, int> adventurerInventory = adventurer.Inventory;
+
+            if (!adventurerInventory.ContainsKey(selectedItemNo))
+            {
+                adventurerInventory.Add(selectedItemNo, amountChange);
+            }
+            else
+            {
+                adventurerInventory[selectedItemNo] += amountChange;
+            }
+        }
+
+        public static void RemoveItemQuantityFromInventory(int selectedItemNo, Adventurer adventurer, int amountChange)
+        {
+            Dictionary<int, int> adventurerInventory = adventurer.Inventory;
+
+            adventurerInventory[selectedItemNo] -= amountChange;
 
             if (adventurerInventory[selectedItemNo] <= 0)
             {
                 adventurerInventory.Remove(selectedItemNo);
             }
-
         }
     }
 }

@@ -12,6 +12,7 @@ builder.Services.AddScoped<IMazeGameApplicationService, MazeGameApplicationServi
 builder.Services.AddScoped<IMazeGameService, MazeGameService>();
 builder.Services.AddScoped<IIceCavern, IceCavern>();
 builder.Services.AddScoped<IFireCavern, FireCavern>();
+builder.Services.AddScoped<IThickForest, ThickForest>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

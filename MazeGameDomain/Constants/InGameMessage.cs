@@ -99,6 +99,22 @@ namespace MazeGameDomain.Constants
         public static readonly string DefeatMagma = "The Magma dissolves into the lake, and the lake returned to its calm state!";
 
         /// <summary>
+        /// Message used for Thick Forest Map
+        /// </summary>
+        public static readonly string ThickForest = "Entering: Thick Forest... keep your eyes open! This place is cramped with trees and bushes within near vicinity of one another...";
+        public static readonly string DefeatTreeStump = "The stump loses its moisture, and implants back itself into the soil.";
+        public static readonly string DefeatWildMonkey = "The wild monkey lets out a crazed, hysterical laughter, and it loosens the grip on a branch and collapsed.";
+        public static readonly string DefeatForestBandit = "The Bandit collapsed to the ground, strangely, it dissolves into the air, it seems like this bandit is summoned by magic.";
+        public static readonly string DefeatOneEyeLizard = "The One Eyed Lizard closes his eye, yes, one single eye, and layed motionless.";
+        public static readonly string DefeatForestGoblin = "The goblin lets out a huge groan, and shut its eyes, boring... you ignore it and moved on.";
+        public static readonly string DefeatGiantEarthWolf = "Eventually, this huge wolf lets out a howl, albeit his final one, and thuds to the ground. " + 
+                                                             "With the defeat of the wolf, you sense that the forest has a sudden soothing aura in it.";
+        public static readonly string EarthDietySpeech = "Greetings Adventurer, on the journey to destroy monsters in the dungeons aren't you? Please be careful.... " + 
+                                                         "I've seen many adventurers of your kind losing their lives doing the same thing as well! " + 
+                                                         "Here, perhaps this will help you with your journey...";
+        public static readonly string EarthDietyRestoration = "The Earth Diety chants for a moment, you'll discover that your health and mana have been replenished slightly!";
+
+        /// <summary>
         /// Message used for Death Flow
         /// </summary>
         public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You died... " + 
@@ -151,9 +167,14 @@ namespace MazeGameDomain.Constants
         {
             return $"You consumed a {itemName}, your {attributeType} is increased by {effectPower}.";
         }
+
+        public static string ObtainedItemInformation(string itemName, int quantity) 
+        {
+            return $"You've acquired {itemName}: {quantity}";
+        }
         public static string MonsterAttackingInformation(string monsterName, string skillName, decimal monsterDamage)
         {
-            return $"{monsterName} uses {skillName}!" + $"\n dealing {monsterDamage} Damage!";
+            return $"{monsterName} uses {skillName}! Dealing {monsterDamage} Damage!";
         }
 
         public static string AdventurerCurrentHealth(decimal currentHealth)
@@ -178,7 +199,7 @@ namespace MazeGameDomain.Constants
 
         public static string AdventurerAttackingInformation(string skillName, decimal skillDamage)
         {
-            return $"You used {skillName}!" + $"\n dealing {skillDamage} Damage!";
+            return $"You used {skillName}! Dealing {skillDamage} Damage!";
         }
 
         public static string MonsterCurrentHealth(decimal currentHealth, string monsterName)
@@ -189,6 +210,11 @@ namespace MazeGameDomain.Constants
         public static string AdventurerUtilityInformation(string skillName, string attributeType, decimal effectPower)
         {
             return $"You used {skillName}!" + $"\nyour {attributeType} is increased by {effectPower}.";
+        }
+
+        public static string MonsterUtilityInformation(string skillName, string monsterName, string attributeType, decimal effectPower)
+        {
+            return $"{monsterName} used {skillName}!" + $"\n{monsterName} {attributeType} is increased by {effectPower}.";
         }
 
         public static string PromptForkRoadOptions(string option1, string option2)

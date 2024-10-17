@@ -40,7 +40,7 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 },
 
-                Positive = new MazeGameDecisionResult() { Result = MazeGameFlow.Victory }
+                Positive = new MazeGameDecisionResult() { Result = MazeGameFlow.ThickForest }
             };
 
             MagmaEncounter = new MazeGameDecisionQuery()

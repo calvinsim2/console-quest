@@ -7,6 +7,6 @@ namespace MazeGameDomain.Interfaces
     {
         void StartGame(MazeGameDataModel mazeGameDataModel);
 
-        MazeGameFlow MazeGameAsync(MazeGameDataModel mazeGameDataModel, MazeGameFlow startingStep);
+        MazeGameFlow QuestGame(MazeGameDataModel mazeGameDataModel, MazeGameFlow startingStep);
     }
 }
