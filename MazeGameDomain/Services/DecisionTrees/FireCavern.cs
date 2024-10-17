@@ -1,5 +1,7 @@
-﻿using MazeGameDomain.Commons.Combat;
+﻿using MazeGameDomain.Commons;
+using MazeGameDomain.Commons.Combat;
 using MazeGameDomain.Commons.GenerateMonsters;
+using MazeGameDomain.Commons.Skills;
 using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces.DecisionTrees;
@@ -37,7 +39,6 @@ namespace MazeGameDomain.Services.DecisionTrees
                 ProcessPhase = () =>
                 {
                     return true;
-
                 },
 
                 Positive = new MazeGameDecisionResult() { Result = MazeGameFlow.ThickForest }

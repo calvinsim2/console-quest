@@ -57,17 +57,42 @@ namespace MazeGameDomain.Commons.Skills
         }
 
         /// <summary>
+        /// Description: Creation of Warrior Skills
+        /// </summary>
+        public static AdventurerSkill PunishingSwing()
+        {
+            return new AdventurerSkillBuilder().SetName("Punishing Swing").SetEffectPower(30m).SetAttackType((int)AttackType.Magic).SetMpCost(30m).Build();
+        }
+
+        /// <summary>
         /// Description: Creation of Magician Skills
         /// </summary>
-
         public static AdventurerSkill ColdBeam()
         {
             return new AdventurerSkillBuilder().SetName("Cold Beam").SetEffectPower(20m).SetAttackType((int)AttackType.Magic).SetMpCost(20m).Build();
         }
 
+        public static AdventurerSkill IceStrike()
+        {
+            return new AdventurerSkillBuilder().SetName("Ice Strike").SetEffectPower(40m).SetAttackType((int)AttackType.Magic).SetMpCost(40m).Build();
+        }
+
+        public static AdventurerSkill FlameExplosion()
+        {
+            return new AdventurerSkillBuilder().SetName("Flame Explosion").SetEffectPower(40m).SetAttackType((int)AttackType.Magic).SetMpCost(40m).Build();
+        }
+
         public static AdventurerSkill FireArrow()
         {
             return new AdventurerSkillBuilder().SetName("Fire Arrow").SetEffectPower(20m).SetAttackType((int)AttackType.Magic).SetMpCost(20m).Build();
+        }
+
+        /// <summary>
+        /// Description: Creation of Archer Skills
+        /// </summary>
+        public static AdventurerSkill ArrowRain()
+        {
+            return new AdventurerSkillBuilder().SetName("Arrow Rain").SetEffectPower(40m).SetAttackType((int)AttackType.Magic).SetMpCost(30m).Build();
         }
     }
 }

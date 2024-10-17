@@ -45,6 +45,12 @@ namespace MazeGameDomain.Commons
             
         }
 
+        public static void AcquireNewWarriorSkill(Adventurer adventurer, AdventurerSkill warriorSkill)
+        {
+            adventurer.Skills.Add(warriorSkill);
+            Console.WriteLine(InGameMessage.DisplayLearntNewSkillMessage(warriorSkill));
+        }
+
         public static void AcquireNewMagicianSkill(Adventurer adventurer, int specialisationChoice, 
                                                    AdventurerSkill iceMageSkill, AdventurerSkill fireMageSkill)
         {
@@ -52,6 +58,12 @@ namespace MazeGameDomain.Commons
             adventurer.Skills.Add(learntAdventurerSkill);
 
             Console.WriteLine(InGameMessage.DisplayLearntNewSkillMessage(learntAdventurerSkill));
+        }
+
+        public static void AcquireNewArcherSkill(Adventurer adventurer, AdventurerSkill archerSkill)
+        {
+            adventurer.Skills.Add(archerSkill);
+            Console.WriteLine(InGameMessage.DisplayLearntNewSkillMessage(archerSkill));
         }
     }
 }
