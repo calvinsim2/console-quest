@@ -1,6 +1,8 @@
-﻿using MazeGameDomain.Commons.Combat;
+﻿using MazeGameDomain.Commons;
+using MazeGameDomain.Commons.Combat;
 using MazeGameDomain.Commons.GenerateMonsters;
 using MazeGameDomain.Commons.Items;
+using MazeGameDomain.Commons.Skills;
 using MazeGameDomain.Constants;
 using MazeGameDomain.Enums;
 using MazeGameDomain.Interfaces.DecisionTrees;
@@ -21,6 +23,7 @@ namespace MazeGameDomain.Services.DecisionTrees
         public MazeGameDecisionQuery ForestBanditEncounter { get; set; }
         public MazeGameDecisionQuery WeirdMonkeyEncounter { get; set; }
         public MazeGameDecisionQuery ForkedRoad { get; set; }
+        public MazeGameDecisionQuery MonsterReward { get; set; }
         public MazeGameDecisionQuery TreeStumpEncounter { get; set; }
         public MazeGameDecisionQuery AbandonedBackPack { get; set; }
 
@@ -191,6 +194,38 @@ namespace MazeGameDomain.Services.DecisionTrees
                 Negative = OneEyeLizardEncounter,
             };
 
+            MonsterReward = new MazeGameDecisionQuery()
+            {
+                Title = "Upon the death of the monster, it seems to have dropped something... it looks like a skillbook!",
+
+                ProcessPhase = () =>
+                {
+                    Class adventurerClass = (Class)adventurerDetail.Class;
+
+                    switch (adventurerClass)
+                    {
+                        case Class.Warrior:
+                            AdventurerEnhancement.AcquireNewWarriorSkill(adventurerDetail, AdventurerSkillsCreation.PunishingSwing());
+                            break;
+
+                        case Class.Magician:
+                            AdventurerEnhancement.AcquireNewMagicianSkill(adventurerDetail, adventurerDetail.Specialisation,
+                                                                          AdventurerSkillsCreation.IceStrike(),
+                                                                          AdventurerSkillsCreation.FlameExplosion());
+                            break;
+
+                        case Class.Archer:
+                            AdventurerEnhancement.AcquireNewWarriorSkill(adventurerDetail, AdventurerSkillsCreation.ArrowRain());
+                            break;
+                    }
+
+                    return true;
+
+                },
+
+                Positive = ForkedRoad
+            };
+
             TreeStumpEncounter = new MazeGameDecisionQuery
             {
                 Title = "The tree stump starts shuffling and comes to life! Apparently it seems attached to the backpack....",
@@ -209,7 +244,7 @@ namespace MazeGameDomain.Services.DecisionTrees
                     return false;
                 },
 
-                Positive = ForkedRoad,
+                Positive = MonsterReward,
                 Negative = new MazeGameDecisionResult { Result = MazeGameFlow.Death },
             };
 
