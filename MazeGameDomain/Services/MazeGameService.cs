@@ -13,11 +13,13 @@ namespace MazeGameDomain.Services
         private readonly IIceCavern _iceCavern;
         private readonly IFireCavern _fireCavern;
         private readonly IThickForest _thickForest;
-        public MazeGameService(IIceCavern iceCavern, IFireCavern fireCavern, IThickForest thickForest) 
+        private readonly ISkyCastle _skyCastle;
+        public MazeGameService(IIceCavern iceCavern, IFireCavern fireCavern, IThickForest thickForest, ISkyCastle skyCastle) 
         {
             _iceCavern = iceCavern;
             _fireCavern = fireCavern;
             _thickForest = thickForest; 
+            _skyCastle = skyCastle;
         }
 
         public void StartGame(MazeGameDataModel mazeGameDataModel)
@@ -47,6 +49,10 @@ namespace MazeGameDomain.Services
 
                     case MazeGameFlow.ThickForest:
                         currentStep = ExecuteThickForestFlow(mazeGameDataModel);
+                        break;
+
+                    case MazeGameFlow.SkyCastle:
+                        currentStep = ExecuteSkyCastleFlow(mazeGameDataModel);
                         break;
 
                     case MazeGameFlow.Death:
@@ -107,6 +113,17 @@ namespace MazeGameDomain.Services
             Console.WriteLine(InGameMessage.BlankRow);
             MazeGameDecisionQuery thickForestCreate = _thickForest.TransverseThickForest(mazeGameDataModel);
             MazeGameFlow currentStep = thickForestCreate.EvaluateAsync();
+
+            return currentStep;
+        }
+
+        private MazeGameFlow ExecuteSkyCastleFlow(MazeGameDataModel mazeGameDataModel)
+        {
+            Console.WriteLine(InGameMessage.BlankRow);
+            Console.WriteLine(InGameMessage.SkyCastle);
+            Console.WriteLine(InGameMessage.BlankRow);
+            MazeGameDecisionQuery skyCastleCreate = _skyCastle.TransverseSkyCastle(mazeGameDataModel);
+            MazeGameFlow currentStep = skyCastleCreate.EvaluateAsync();
 
             return currentStep;
         }

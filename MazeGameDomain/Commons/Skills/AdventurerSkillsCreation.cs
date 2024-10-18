@@ -57,6 +57,14 @@ namespace MazeGameDomain.Commons.Skills
         }
 
         /// <summary>
+        /// Description: Creation of Common Skills
+        /// </summary>
+        public static AdventurerSkill WindRestoration()
+        {
+            return new AdventurerSkillBuilder().SetName("Wind Restoration").SetEffectPower(30m).SetMpCost(0m).SetIsUtility(true).SetAttributeTarget(1).Build();
+        }
+
+        /// <summary>
         /// Description: Creation of Warrior Skills
         /// </summary>
         public static AdventurerSkill PunishingSwing()

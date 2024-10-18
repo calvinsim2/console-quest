@@ -255,13 +255,8 @@ namespace MazeGameDomain.Services.DecisionTrees
 
                 ProcessPhase = () =>
                 {
-                    Item hpElixir = ItemDetails.GetItemByItemNumber((int)ItemIndex.HpElixir);
-                    Item mpElixir = ItemDetails.GetItemByItemNumber((int)ItemIndex.MpElixir);
-
-                    Console.WriteLine(InGameMessage.ObtainedItemInformation(hpElixir.Name, 1));
-                    Console.WriteLine(InGameMessage.ObtainedItemInformation(mpElixir.Name, 1));
-                    ItemUtilisation.UpdateAdventurerInventory(hpElixir.ItemNo, adventurerDetail, true, 1);
-                    ItemUtilisation.UpdateAdventurerInventory(mpElixir.ItemNo, adventurerDetail, true, 1);
+                    ItemDetails.ObtainNewItems((int)ItemIndex.HpElixir, 1, adventurerDetail);
+                    ItemDetails.ObtainNewItems((int)ItemIndex.MpElixir, 1, adventurerDetail);
 
                     return true;
                 },
