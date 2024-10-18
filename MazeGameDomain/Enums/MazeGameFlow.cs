@@ -6,6 +6,7 @@
         IceCavern,
         FireCavern,
         ThickForest,
+        SkyCastle,
         Death,
         Victory,
         EndGame

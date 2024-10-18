@@ -115,6 +115,20 @@ namespace MazeGameDomain.Constants
         public static readonly string EarthDietyRestoration = "The Earth Diety chants for a moment, you'll discover that your health and mana have been replenished slightly!";
 
         /// <summary>
+        /// Message used for Sky Castle Map
+        /// </summary>
+        public static readonly string SkyCastle = "Entering: Sky Castle... this wide and open land once used to be a prosperous kingdom, only to be reduced to this state... " + 
+                                                  "Nevertheless, be wary! The traps and defense in this map are still active, and monsters have made this place their new home!";
+
+        public static readonly string DefeatSkeletonArcher = "The skeleton archer's bone starts collapsing like dominos.";
+        public static readonly string DefeatWindVulture = "Squawk! goes the vulture, and the next thing you know, it dive towards the forest with a loud thud sound" + 
+                                                             " never to be seen again.";
+        public static readonly string DefeatGryphon = "The gargantuan gryphon falls, causing the grounds in the castle to tremble slightly.";
+        public static readonly string DefeatCockatrice = "With this weird creature falling, you witness the chicken body and snake tail detach from each other, and they lay motionless";
+        public static readonly string DefeatCrazedOldWizard = "Putting this old man out of his misery is the best you could do for him - rest in peace, old man.";
+        public static readonly string DefeatWindDragon = "The mighty wind dragon falls, you feel the wind in the castle died down.";
+
+        /// <summary>
         /// Message used for Death Flow
         /// </summary>
         public static readonly string Death = "Blood gushes out from your mouth, your vision turns blurry, and eventually blacked out. You died... " + 

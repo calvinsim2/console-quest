@@ -45,6 +45,13 @@ namespace MazeGameDomain.Commons
             
         }
 
+        public static void AcquireNewCommonSkill(Adventurer adventurer, AdventurerSkill skill)
+        {
+            adventurer.Skills.Add(skill);
+            Console.WriteLine(InGameMessage.DisplayLearntNewSkillMessage(skill));
+        }
+
+
         public static void AcquireNewWarriorSkill(Adventurer adventurer, AdventurerSkill warriorSkill)
         {
             adventurer.Skills.Add(warriorSkill);
