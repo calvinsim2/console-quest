@@ -1,12 +1,11 @@
 # Console Quest
 
 ## Introduction
-A simple and straightforward adventure game that is solely interactable via console.
+A simple and straightforward adventure game played entirely through console interactions.
 
 ## Motivation
 
-ConsoleQuest was created to offer a straightforward, retro-style command-line interaction game with no graphical user interface, allowing aspiring ASP.NET developers to concentrate entirely on backend logic. The project's design emphasizes understanding how data flows between the application and domain services, providing a practical learning experience. Additionally, it incorporates well-known Creational Design Patterns, such as Factory Method and Builder, giving developers an opportunity to apply these patterns hands-on and deepen their comprehension through practical implementation.
-
+ConsoleQuest was created to offer a classic command-line interaction game, intentionally designed without a graphical user interface. This simple project aims to help aspiring ASP.NET developers focus solely on backend logic development, allowing them to gain a solid understanding of how data flows between the application and domain services. The project also serves as a hands-on opportunity to explore well-known creational design patterns, such as the Factory Method and Builder patterns. Each stage of the game is built using a decision tree, where small, incremental decisions are made step by step, guiding the progression. This approach helps developers deepen their understanding and practical application of these design patterns through direct experience.
 
 ## Prerequisites
 
@@ -31,15 +30,19 @@ ConsoleQuest was created to offer a straightforward, retro-style command-line in
     git clone https://github.com/calvinsim2/console-quest.git
 
 2. **Navigate to the Project Directory**
+    ```bash
     cd console-quest
 
 3. **Restore Dependencies Run the following command to restore the necessary dependencies for the project:**
+    ```bash
     dotnet restore
 
 4. **Build the Project To ensure everything is set up correctly, build the project using:**
+    ```bash
     dotnet build
 
 5. **Run the Application Start the application using:**
+    ```bash
     dotnet run
 
 6. **Access the Application**
