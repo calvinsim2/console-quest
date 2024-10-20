@@ -37,7 +37,7 @@ ConsoleQuest was created to offer a classic command-line interaction game, inten
     ```bash
     dotnet restore
 
-4. **Build the Project To ensure everything is set up correctly, build the project using:**
+4. **Build the Project. To ensure everything is set up correctly, build the project using:**
     ```bash
     dotnet build
 
@@ -48,6 +48,10 @@ ConsoleQuest was created to offer a classic command-line interaction game, inten
 6. **Access the Application**
     All interactions will happen via the console. 
     The game starts via a Swagger interface by making a GET request. Follow any instructions provided in the console.
+
+## Future Enhancements
+- Implement **Element Types** for monsters and Adventurers' skills, thus allowing for more strategic gameplay.
+- Introducing **Boss** dungeons, increasing the difficulty of gameplay.
 
 ## Helpful Links
 - [C# – Decision Tree – Simple Example](https://code.4noobz.net/decision-tree-simple-example/)
